@@ -1,3 +1,8 @@
+<%
+    String err = null;
+    err = (String) session.getAttribute("err");
+%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 
@@ -50,8 +55,8 @@
                                     <h2>Đăng nhập</h2>
                                     <form action="./logincontroller" method="POST">
                                         <div class="form-group">
-                                            <label for="username">Tên đăng nhập</label>
-                                            <input type="text" class="form-control" id="username" name="username" required>
+                                            <label for="username">Email</label>
+                                            <input type="email" class="form-control" id="username" name="email" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="password">Mật khẩu</label>
@@ -60,8 +65,14 @@
                                         <button type="submit" class="btn btn-primary">Đăng nhập</button>
                                     </form>
                                     <div class="form-footer">
+                                        <%if (err == null) {%>
                                         <p>Chưa có tài khoản? <a href="./registercontroller">Đăng kí</a></p>
                                         <p>Quên mật khẩu? <a href="./registercontroller">Thay đổi</a></p>
+                                        <%} else {%>
+                                        <p style="color: red;"><%=err%></p>
+                                        <p>Chưa có tài khoản? <a href="./registercontroller">Đăng kí</a></p>
+                                        <p>Quên mật khẩu? <a href="./registercontroller">Thay đổi</a></p>
+                                        <%}%>
                                     </div>
                                 </div>
                             </div>
