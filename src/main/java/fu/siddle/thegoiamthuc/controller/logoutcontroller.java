@@ -59,13 +59,13 @@ public class logoutcontroller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(false);
 
-        //xoa session
-        session.invalidate();
-        
-        RequestDispatcher rd = request.getRequestDispatcher("views/web/index.jsp");
-        rd.forward(request, response);
+        if (session != null) {
+            session.invalidate();
+        }
+
+        response.sendRedirect("indexcontroller");
     }
 
     /**

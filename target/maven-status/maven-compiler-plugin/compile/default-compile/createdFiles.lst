@@ -1,5 +1,8 @@
 fu\siddle\thegoiamthuc\controller\logoutcontroller.class
+fu\siddle\thegoiamthuc\model\User.class
+fu\siddle\thegoiamthuc\controller\adindexcontroller.class
 fu\siddle\thegoiamthuc\model\dao\DAO.class
+fu\siddle\thegoiamthuc\model\dao\UserDAO.class
 fu\siddle\thegoiamthuc\controller\logincontroller.class
 fu\siddle\thegoiamthuc\model\Admin.class
 fu\siddle\thegoiamthuc\model\dao\AdminDAO.class
