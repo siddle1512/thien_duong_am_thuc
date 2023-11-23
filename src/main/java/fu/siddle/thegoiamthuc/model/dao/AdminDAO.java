@@ -43,4 +43,9 @@ public class AdminDAO implements DAO<Admin> {
     public void insert(Admin obj) {
     }
 
+    @Override
+    public List<Admin> get(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

@@ -77,4 +77,36 @@ public class UserDAO implements DAO<User> {
             System.err.println(ex.getMessage());
         }
     }
+
+    @Override
+    public List<User> get(String e) {
+        List<User> list = new ArrayList<>();
+
+        try {
+            Connection conn = JDBC.getConnection();
+
+            PreparedStatement smt = conn.prepareStatement("SELECT * FROM user WHERE email = ?");
+            smt.setString(1, e);
+
+            ResultSet rs = smt.executeQuery();
+
+            while (rs.next()) {
+                String username = rs.getString("username");
+                String birth_year = rs.getString("birth_year");
+                String gender = rs.getString("gender");
+                String email = rs.getString("email");
+                String hashed_password = rs.getString("hashed_password");
+                String avatar_path = rs.getString("avatar_path");
+                String adress = rs.getString("adress");
+
+                list.add(new User(username, birth_year, gender, email, hashed_password, avatar_path, adress));
+            }
+
+            JDBC.closeConnection(conn);
+
+        } catch (SQLException ex) {
+        }
+        
+        return list;
+    }
 }

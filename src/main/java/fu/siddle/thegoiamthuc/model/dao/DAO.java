@@ -7,4 +7,6 @@ public interface DAO<T> {
     public List<T> getAll();
 
     public void insert(T obj);
+
+    public List<T> get(String email);
 }
