@@ -1,6 +1,6 @@
 <%       
     String username = null;
-
+  
     username = (String) session.getAttribute("username");
 %>
 
