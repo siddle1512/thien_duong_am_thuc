@@ -56,4 +56,25 @@ public class UserDAO implements DAO<User> {
 
         return list;
     }
+
+    @Override
+    public void insert(User obj) {
+        try {
+            Connection conn = JDBC.getConnection();
+
+            PreparedStatement smt = conn.prepareStatement("INSERT INTO user(username, birth_year, gender, email, hashed_password, avatar_path, adress) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            smt.setString(1, obj.getUsername());
+            smt.setString(2, obj.getBirth_year());
+            smt.setString(3, obj.getGender());
+            smt.setString(4, obj.getEmail());
+            smt.setString(5, obj.getHashed_password());
+            smt.setString(6, obj.getAvatar_path());
+            smt.setString(7, obj.getAdress());
+
+            smt.executeUpdate();
+            JDBC.closeConnection(conn);
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
 }

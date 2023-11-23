@@ -4,6 +4,7 @@ import fu.siddle.thegoiamthuc.model.dao.AdminDAO;
 import fu.siddle.thegoiamthuc.model.Admin;
 import fu.siddle.thegoiamthuc.model.User;
 import fu.siddle.thegoiamthuc.model.dao.UserDAO;
+import fu.siddle.thegoiamthuc.service.Hash;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -35,7 +36,10 @@ public class logincontroller extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        boolean isValidUser = checkUserLogin(email, password);
+        //hash password
+        String hashed_password = Hash.SHA256(password);
+
+        boolean isValidUser = checkUserLogin(email, hashed_password);
         boolean isValidAdmin = checkAdminLogin(email, password);
 
         if (isValidUser) {
