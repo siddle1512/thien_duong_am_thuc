@@ -1,0 +1,16 @@
+/* CSS styles */
+.user-avatar {
+    width: 75px;
+    height: 75px;
+    border-radius: 20%;
+    overflow: hidden;
+    border: 1px solid #fff;
+
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+

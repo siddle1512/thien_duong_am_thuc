@@ -19,10 +19,10 @@
                         <a class="nav-link" href="./indexcontroller">Trang chủ <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./MenuController">Thực đơn</a>
+                        <a class="nav-link" href="./menucontroller">Thực đơn</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./AboutController">Thông tin</a>
+                        <a class="nav-link" href="./aboutcontroller">Thông tin</a>
                     </li>
 
                     <li class="nav-item">

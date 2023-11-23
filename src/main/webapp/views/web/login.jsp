@@ -42,7 +42,7 @@
     <body>
         <div class="hero_area">
             <div class="bg-box">
-                <img src="${pageContext.request.contextPath}/assets/images/hero-bg.jpg" alt="">
+                <img src="https://cdn.dribbble.com/users/3951514/screenshots/7288432/media/866b49d81c982fdecd5a22de44c5e677.gif" alt="">
             </div>
             <%@include file="/views/layout/header.jsp" %>
 

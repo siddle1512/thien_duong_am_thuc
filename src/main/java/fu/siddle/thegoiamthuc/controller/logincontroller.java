@@ -43,7 +43,9 @@ public class logincontroller extends HttpServlet {
         boolean isValidAdmin = checkAdminLogin(email, password);
 
         if (isValidUser) {
-            session.setAttribute("username", email);
+            List<User> listuserlogin = UserDAO.getInstance().get(email);
+            session.setAttribute("listuserlogin", listuserlogin);
+
             response.sendRedirect("./indexcontroller");
         } else if (isValidAdmin) {
             session.setAttribute("username", email);

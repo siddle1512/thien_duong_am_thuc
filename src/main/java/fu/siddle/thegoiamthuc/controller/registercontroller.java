@@ -75,7 +75,7 @@ public class registercontroller extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
-        
+
         String username = request.getParameter("username");
         String birth_year = request.getParameter("birth_year");
         String gender = request.getParameter("gender");
@@ -84,7 +84,7 @@ public class registercontroller extends HttpServlet {
 
         // hash passowrd
         String password = request.getParameter("password");
-        
+
         String hashed_password = Hash.SHA256(password);
 
         //phan hinh anh
@@ -94,15 +94,15 @@ public class registercontroller extends HttpServlet {
 
         // Uploading vao thu muc
         try {
-            
+
             FileOutputStream fos = new FileOutputStream(uploadPath);
             InputStream is = file.getInputStream();
-            
+
             byte[] data = new byte[is.available()];
             is.read(data);
             fos.write(data);
             fos.close();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -111,6 +111,7 @@ public class registercontroller extends HttpServlet {
         User u = new User(username, birth_year, gender, email, hashed_password, imageFileName, adress);
         //insert database
         UserDAO.getInstance().insert(u);
+        response.sendRedirect("./indexcontroller");
     }
 
     /**
