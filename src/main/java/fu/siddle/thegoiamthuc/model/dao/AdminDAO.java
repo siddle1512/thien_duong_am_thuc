@@ -39,4 +39,8 @@ public class AdminDAO implements DAO<Admin> {
         return list;
     }
 
+    @Override
+    public void insert(Admin obj) {
+    }
+
 }

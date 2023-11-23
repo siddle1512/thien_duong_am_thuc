@@ -48,13 +48,13 @@
                                     <h2>Đăng ký</h2>
                                     <form action="registercontroller" method="POST" enctype="multipart/form-data">
                                         <div class="form-group">
-                                            <label for="username">Họ và tên</label>
+                                            <label for="username">Tên đăng nhập</label>
                                             <input type="text" class="form-control" id="username" name="username" required>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="email">Năm sinh</label>
-                                            <input type="email" class="form-control" id="email" name="email" required>
+                                            <input type="number" class="form-control" id="email" name="birth_year" required>
                                         </div>
 
                                         <div class="form-group">
@@ -72,12 +72,12 @@
 
                                         <div class="form-group">
                                             <label for="username">Địa chỉ</label>
-                                            <input type="text" class="form-control" id="username" name="username" required>
+                                            <input type="text" class="form-control" id="username" name="adress" required>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="username">Email</label>
-                                            <input type="email" class="form-control" id="username" name="username" required>
+                                            <input type="email" class="form-control" id="username" name="email" required>
                                         </div>
 
                                         <div class="form-group">
