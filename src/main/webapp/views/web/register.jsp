@@ -45,24 +45,56 @@
                         <div class="row">
                             <div class="col-md-6 offset-md-3">
                                 <div class="box">
-                                    <h2>Register</h2>
-                                    <form id="registerForm" action="YOUR_REGISTER_PROCESSING_SERVLET_OR_JSP" method="POST">
+                                    <h2>Đăng ký</h2>
+                                    <form action="registercontroller" method="POST" enctype="multipart/form-data">
                                         <div class="form-group">
-                                            <label for="username">Username</label>
+                                            <label for="username">Tên đăng nhập</label>
                                             <input type="text" class="form-control" id="username" name="username" required>
                                         </div>
+
                                         <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="email" class="form-control" id="email" name="email" required>
+                                            <label for="email">Năm sinh</label>
+                                            <input type="number" class="form-control" id="email" name="birth_year" required>
                                         </div>
+
                                         <div class="form-group">
-                                            <label for="password">Password</label>
+                                            <label for="gender">Gender</label>
+                                            <div>
+                                                <input type="radio" id="male" name="gender" value="male" required>
+                                                <label for="male">Male</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" id="female" name="gender" value="female" required>
+                                                <label for="female">Female</label>
+                                            </div>
+                                            <!-- You can add more options (non-binary, etc.) if needed -->
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="username">Địa chỉ</label>
+                                            <input type="text" class="form-control" id="username" name="adress" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="username">Email</label>
+                                            <input type="email" class="form-control" id="username" name="email" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="password">Mật khẩu</label>
                                             <input type="password" class="form-control" id="password" name="password" required>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="profilePicture">Ảnh đại diện</label>
+                                            <input type="file" class="form-control-file" id="profilePicture" name="profilePicture" accept="image/*">
+                                            <!-- 'accept="image/*"' ensures only image files can be uploaded -->
+                                        </div>
+
                                         <button type="submit" class="btn btn-primary">Register</button>
                                     </form>
                                     <div class="form-footer">
-                                        <p>Already have an account? <a href="#">Login</a></p>
+                                        <p>Bạn đã có tài khoản? <a href="#">Đăng nhập</a></p>
                                     </div>
                                 </div>
                             </div>

@@ -2,8 +2,10 @@ package fu.siddle.thegoiamthuc.controller;
 
 import fu.siddle.thegoiamthuc.model.dao.AdminDAO;
 import fu.siddle.thegoiamthuc.model.Admin;
+import fu.siddle.thegoiamthuc.model.User;
+import fu.siddle.thegoiamthuc.model.dao.UserDAO;
+import fu.siddle.thegoiamthuc.service.Hash;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,41 +18,6 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "logincontroller", urlPatterns = {"/logincontroller"})
 public class logincontroller extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet logincontroller</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet logincontroller at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -58,47 +25,44 @@ public class logincontroller extends HttpServlet {
         rd.forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
 
-        String username = request.getParameter("username");
+        HttpSession session = request.getSession(true);
+
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        boolean isValidUser = checkLogin(username, password);
+        //hash password
+        String hashed_password = Hash.SHA256(password);
+
+        boolean isValidUser = checkUserLogin(email, hashed_password);
+        boolean isValidAdmin = checkAdminLogin(email, password);
 
         if (isValidUser) {
-            HttpSession session = request.getSession(true);
-            session.setAttribute("username", username);
-
+            session.setAttribute("username", email);
             response.sendRedirect("./indexcontroller");
-
+        } else if (isValidAdmin) {
+            session.setAttribute("username", email);
+            response.sendRedirect("./adindexcontroller");
         } else {
             response.sendRedirect("./logincontroller");
+            String err = "Sai email hoặc mật khẩu vui lòng kiểm tra lại!";
+            session.setAttribute("err", err);
         }
     }
 
-    private boolean checkLogin(String username, String password) {
-        Admin newU = new Admin(username, password);
+    private boolean checkUserLogin(String email, String password) {
+        User usr = new User(email, password);
 
-        //kiem tra ket noi
-        System.err.println(username);
-        System.err.println(password);
+        //lay data
+        List<User> list = UserDAO.getInstance().getAll();
 
-        List<Admin> list = AdminDAO.getInstance().getAll();
-
-        for (Admin u : list) {
-            if (u.getEmail().equals(newU.getEmail()) && u.getPassword().equals(newU.getPassword())) {
+        for (User u : list) {
+            if (u.getEmail().equals(usr.getEmail()) && u.getHashed_password().equals(usr.getHashed_password())) {
                 return true;
             }
         }
@@ -106,14 +70,18 @@ public class logincontroller extends HttpServlet {
         return false;
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+    private boolean checkAdminLogin(String email, String password) {
+        Admin ad = new Admin(email, password);
 
+        //lay data
+        List<Admin> list = AdminDAO.getInstance().getAll();
+
+        for (Admin a : list) {
+            if (ad.getEmail().equals(a.getEmail()) && ad.getPassword().equals(a.getPassword())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
