@@ -1,9 +1,16 @@
-<%       
-    String username = null;
+<%
+    String imagepath = null;
 
-    username = (String) session.getAttribute("username");
+    List<User> ul = (List<User>) session.getAttribute("listuserlogin");
+
+    if (ul != null) {
+        imagepath = ul.get(0).getAvatar_path();
+
+    }
+
 %>
-
+<%@page import="java.util.List"%>
+<%@page import="fu.siddle.thegoiamthuc.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -34,6 +41,8 @@
 
         <!-- Custom styles for this template -->
         <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet" />
+        <title>Navigation Bar with Avatar</title>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/styles.css">
         <!-- responsive style -->
         <link href="${pageContext.request.contextPath}/assets/css/responsive.css" rel="stylesheet" />
     </head>
@@ -41,7 +50,7 @@
     <body>
         <div class="hero_area">
             <div class="bg-box">
-                <img src="${pageContext.request.contextPath}/assets/images/hero-bg.jpg" alt="">
+                <img src="https://cdn.dribbble.com/users/3951514/screenshots/7288432/media/866b49d81c982fdecd5a22de44c5e677.gif" alt="">
             </div>
 
             <!-- header section strats -->
@@ -64,13 +73,13 @@
                                     <a class="nav-link" href="./indexcontroller">Trang chủ <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="./MenuController">Thực đơn</a>
+                                    <a class="nav-link" href="./menucontroller">Thực đơn</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="./AboutController">Thông tin</a>
+                                    <a class="nav-link" href="./aboutcontroller">Thông tin</a>
                                 </li>
 
-                                <%if (username == null) {%>
+                                <%if (imagepath == null) {%>
                                 <li class="nav-item">
                                     <a class="nav-link" href="./registercontroller">Đăng kí</a>
                                 </li>
@@ -83,8 +92,16 @@
                                     <a class="nav-link" href="./logoutcontroller">Đăng xuất</a>
                                 </li>
 
+                                <!-- User Avatar -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="./indexcontroller"><%=username%></a>
+                                    <div class="user-avatar">
+                                        <!-- Replace 'avatar_image_url' with the actual URL of the user's avatar -->
+                                        <img src="<%=imagepath%>" alt="User Avatar" class="avatar-img">
+                                    </div>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./indexcontroller"><%=ul.get(0).getUsername()%></a>
                                 </li
 
                                 <li class="nav-item">
