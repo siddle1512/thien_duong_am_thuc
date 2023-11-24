@@ -16,6 +16,8 @@
 
     }
 
+    String keysearch = (String) session.getAttribute("keysearch");
+
    
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -35,7 +37,7 @@
         <meta name="author" content="" />
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon.png" type="">
 
-        <title> Home-Page </title>
+        <title> Home - Page </title>
 
         <!-- bootstrap core css -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
@@ -65,7 +67,7 @@
             <header class="header_section">
                 <div class="container">
                     <nav class="navbar navbar-expand-lg custom_nav-container ">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="./logincontroller">
                             <span>
                                 Thiên Đường Ẩm Thực
                             </span>
@@ -104,7 +106,7 @@
                                 <li class="nav-item">
                                     <div class="user-avatar">
                                         <!-- Replace 'avatar_image_url' with the actual URL of the user's avatar -->
-                                        <img src="<%=imagepath%>" alt="User Avatar" class="avatar-img">
+                                        <img src="${pageContext.request.contextPath}/assets/images/<%=imagepath%>" alt="User Avatar" class="avatar-img">
                                     </div>
                                 </li>
 
@@ -129,6 +131,8 @@
         </div>
 
         <!-- food section -->
+
+
         <section class="food_section layout_padding">
             <div class="container">
 
@@ -136,6 +140,17 @@
                     <h2>
                         Các món
                     </h2>
+                </div>
+
+                <br><br/>
+
+                <div class="heading_container heading_center">
+                    <form action="./searchcontroller" method="get" class="search-form">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="query" value="${keysearch}" required>
+                            <button type="submit" class="btn btn-dark">Tìm kiếm</button>
+                        </div>
+                    </form>
                 </div>
 
                 <ul class="filters_menu">
@@ -149,10 +164,6 @@
                     </li>
                     <% } %>
                 </ul>
-
-
-
-
 
                 <div class="filters-content">
                     <div class="row grid">
@@ -172,7 +183,7 @@
                                         <h6>
                                             <%=f.getPrice()%>₫
                                         </h6>
-                                        <a href="">
+                                        <a href="./detailcontroller?id=<%=f.getId()%>">
                                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                                             <g>
                                             <g>
@@ -209,7 +220,6 @@
         </section>
 
         <!--end food section -->
-
 
         <%@include file="/views/layout/footer.jsp" %>
 

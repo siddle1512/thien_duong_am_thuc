@@ -14,7 +14,7 @@
         <meta name="author" content="" />
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon.png" type="">
 
-        <title> Register-Page </title>
+        <title> Register - Page </title>
 
         <!-- bootstrap core css -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />

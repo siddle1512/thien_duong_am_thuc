@@ -11,4 +11,7 @@ public interface DAO<T> {
     public List<T> get(String email);
 
     public List<T> getID(String id);
+
+    public List<T> getSEARCH(String txt);
+    
 }

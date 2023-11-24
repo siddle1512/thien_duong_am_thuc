@@ -27,7 +27,7 @@
         <meta name="author" content="" />
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon.png" type="">
 
-        <title> Home-Page </title>
+        <title> Home - Page </title>
 
         <!-- bootstrap core css -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
@@ -50,14 +50,14 @@
     <body>
         <div class="hero_area">
             <div class="bg-box">
-                <img src="https://cdn.dribbble.com/users/3951514/screenshots/7288432/media/866b49d81c982fdecd5a22de44c5e677.gif" alt="">
+                <img src="https://media.tenor.com/iVXar9PdSw8AAAAC/shadow-garden.gif" alt="">
             </div>
 
             <!-- header section strats -->
             <header class="header_section">
                 <div class="container">
                     <nav class="navbar navbar-expand-lg custom_nav-container ">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="./logincontroller">
                             <span>
                                 Thiên Đường Ẩm Thực
                             </span>
@@ -96,7 +96,7 @@
                                 <li class="nav-item">
                                     <div class="user-avatar">
                                         <!-- Replace 'avatar_image_url' with the actual URL of the user's avatar -->
-                                        <img src="<%=imagepath%>" alt="User Avatar" class="avatar-img">
+                                        <img src="${pageContext.request.contextPath}/assets/images/<%=imagepath%>" alt="User Avatar" class="avatar-img">
                                     </div>
                                 </li>
 

@@ -87,4 +87,34 @@ public class FooditemDAO implements DAO<Fooditem> {
         return list;
     }
 
+    @Override
+    public List<Fooditem> getSEARCH(String txt) {
+        List<Fooditem> list = new ArrayList<>();
+
+        try {
+            Connection conn = JDBC.getConnection();
+
+            PreparedStatement smt = conn.prepareStatement("SELECT * FROM fooditem WHERE name LIKE ?");
+            smt.setString(1, "%" + txt + "%");
+
+            ResultSet rs = smt.executeQuery();
+
+            while (rs.next()) {
+                int cid = rs.getInt("id");
+                String name = rs.getString("name");
+                int category_id = rs.getInt("category_id");
+                int price = rs.getInt("price");
+                String image = rs.getString("image");
+
+                list.add(new Fooditem(cid, name, category_id, price, image));
+            }
+
+            JDBC.closeConnection(conn);
+
+        } catch (SQLException ex) {
+        }
+
+        return list;
+    }
+
 }
