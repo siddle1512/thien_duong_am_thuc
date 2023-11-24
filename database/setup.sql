@@ -44,14 +44,17 @@ CREATE TABLE IF NOT EXISTS `category` (
   `update_at` date DEFAULT current_timestamp(),
   `delete_at` date DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table thegioiamthuc.category: ~4 rows (approximately)
+-- Dumping data for table thegioiamthuc.category: ~7 rows (approximately)
 INSERT INTO `category` (`id`, `name`, `create_at`, `update_at`, `delete_at`) VALUES
 	(1, 'Đồ ăn', '2023-11-23', '2023-11-23', '2023-11-23'),
 	(2, 'Nước uống', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(3, 'Combo Gà giòn', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(4, 'Combo Đồ ăn + nước', '2023-11-23', '2023-11-23', '2023-11-23');
+	(3, 'Thức ăn nhẹ', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(4, 'Gà rán', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(5, 'Burger', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(6, 'Combo', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(7, 'Món tráng miệng', '2023-11-24', '2023-11-24', '2023-11-24');
 
 -- Dumping structure for table thegioiamthuc.fooditem
 CREATE TABLE IF NOT EXISTS `fooditem` (
@@ -66,33 +69,79 @@ CREATE TABLE IF NOT EXISTS `fooditem` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `FK1_Category` (`category_id`),
   CONSTRAINT `FK1_Category` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table thegioiamthuc.fooditem: ~23 rows (approximately)
+-- Dumping data for table thegioiamthuc.fooditem: ~69 rows (approximately)
 INSERT INTO `fooditem` (`id`, `name`, `category_id`, `price`, `image`, `create_at`, `update_at`, `delete_at`) VALUES
-	(1, 'Phở bò', 1, 25000, 'https://static.vinwonders.com/production/pho-bo-ha-noi.jpeg', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(2, 'Bún chả', 1, 25000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6fLIwELt47v0YX4Rwvo3ogbNWNxbu0wFzbg&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(3, 'Mì xào', 1, 20000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHFfEElklKUevg7uszn4pTM_Nlcn0DWwcOWA&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(4, 'Bánh mì', 1, 20000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSslHniayZoIWjgjjFK_BuLF0Z2z74QuxumvQ&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(5, 'Bún bò Huế', 1, 30000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN-CZ4IzvZVHfypFFe_rg9s6q4wZPz-QRHsw&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(6, 'Gỏi cuốn', 1, 20000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47tEQ7tThNaZFpNlYj6SPyo7K7XtwPS6aJQ&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(7, 'Súp cua', 1, 25000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThUbl7Xr3qL7yvxBMffFomc8lIUkMaGQvmLw&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(8, 'Bún riêu', 1, 20000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbiAmO2UGsWvRGGtUFXBtwcSKD0-G3WjlgHg&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(9, 'Bún đậu mắm tôm', 1, 35000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG7k81AlPmN_gv8lroOSd3WBHbI6T5zFi2JA&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(10, 'Hamburger', 1, 20000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLP3Of1PPleLWLOTHgWg7PpFPSbgpzZ7whVQ&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(11, 'Gà rán', 1, 55000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiJ8Edc6SeJdpvkZ1J0NENPZeN7_KIUVx4HA&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(12, 'Khoai tây chiên', 1, 20000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBaHEnJ5ewBTeICBBaDyGtlpNYEpmVKoVU4A&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(13, 'Pepsi', 2, 15000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgltSa213CoAwce4cnd3WZCkwQqa3vbXiNwg&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(14, 'Coca', 2, 15000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1dcozcIPfW_ULbp5UoAnlNcDoRQS7BcIUew&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(15, 'Cà phê sữa đá', 2, 20000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKR6XcVVUBbNPK6qWCB-gckJmKPxUAeeQ6zQ&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(16, 'Trà sữa trà đen', 2, 20000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuIgwVTZuh036yKBj-2o0lk5hWv7IeFnBZRQ&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(17, 'Soda', 2, 20000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh0xd5IPh3gOdvsD0cBGYjIvKadMnHA9_Y0g&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(18, 'Tàu hũ nước đường', 1, 20000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlWArbR2ne_J9boAvEHUSc7MSlw_vpO6w4Ag&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(19, 'Sữa chua đá', 2, 20000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL8JRTiPPVytFuPdlY9UsPr4d8ccg35erRdg&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(20, 'Bạc sỉu đá', 2, 20000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzVVLdn2HtzbWMeGiQ7YO4A_ERnuFEZd6GPw&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(21, 'Chè thái', 1, 35000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYW_AqEXurrvADljO_DSgKFuLtS64Tc0z2gA&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(22, 'Gà gỏi hẹ', 1, 60000, 'https://cdn.tgdd.vn/2021/02/CookProduct/thumbcmscn-1200x676-19.jpg', '2023-11-23', '2023-11-23', '2023-11-23'),
-	(23, 'Combo gà giòn 1', 3, 120000, 'https://comvanphongonline.com/wp-content/uploads/2019/11/ga-chien-gion.jpg', '2023-11-23', '2023-11-23', '2023-11-23');
+	(1, 'Cơm Gà Teriyaki', 1, 45000, 'https://static.kfcvietnam.com.vn/images/items/lg/Rice-Teriyaki.jpg?v=46obkg', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(2, 'Cơm Gà Tenderods', 1, 45000, 'https://static.kfcvietnam.com.vn/images/items/lg/Rice-TENDERODS.jpg?v=46obkg', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(3, 'Mì Ý Sốt Cà Xúc Xích Gà Viên', 1, 45000, 'https://static.kfcvietnam.com.vn/images/items/lg/MY-Y-POP.jpg?v=46obkg', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(4, '5 Cánh Gà Rán', 4, 83000, 'https://static.kfcvietnam.com.vn/images/items/lg/5-HW.jpg?v=46obkg', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(5, '3 Cánh Gà Rán', 4, 54000, 'https://static.kfcvietnam.com.vn/images/items/lg/3-HW.jpg?v=46obkg', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(6, 'Mì Ý Sốt Cà Xúc Xích Gà Zinger', 1, 45000, 'https://static.kfcvietnam.com.vn/images/items/lg/MY-Y-ZINGER.jpg?v=46obkg', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(7, '1 Miếng Gà Rán', 4, 35000, 'https://static.kfcvietnam.com.vn/images/items/lg/1-Fried-Chicken.jpg?v=46obkg', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(8, '6 Miếng Gà Rán', 4, 188000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/e/e/ee8e7512368728-6mingggin_1.png', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(9, '2 Miếng Gà Rán', 4, 70000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/d/1/d1834d87116836-2mingggin_1.png', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(10, 'Burger Tôm', 5, 44000, 'https://static.kfcvietnam.com.vn/images/items/lg/Burger-Shrimp.jpg?v=46obkg', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(11, '4 Miếng Gà Rán', 4, 126000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/4/2/427e7a3136f84a-4mingggin_1.png', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(12, 'Khoai tây chiên', 3, 20000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/5/5/5532107fb902fd-1860001_khoaivua21.png', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(13, 'PEPSI', 2, 12000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/2/2/22a5960148a32e-2mienggaran14.png', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(14, 'COCA', 2, 12000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1dcozcIPfW_ULbp5UoAnlNcDoRQS7BcIUew&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(15, 'Cacao Sữa Đá', 2, 20000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/c/5/c5ded2aa5f7b3c-2mienggaran19.png', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(16, 'Trà Đào', 2, 20000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/0/f/0f550a170bb756-tradao.png', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(17, '7 UP', 2, 12000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh0xd5IPh3gOdvsD0cBGYjIvKadMnHA9_Y0g&usqp=CAU', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(18, 'Nước Ép Xoài Đào', 2, 20000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/x/o/xoai_dao_menu.png', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(19, 'Burger Gà Quay Flava', 5, 54000, 'https://static.kfcvietnam.com.vn/images/items/lg/Burger-Flava.jpg?v=46obkg', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(20, 'Burger Zinger', 5, 54000, 'https://static.kfcvietnam.com.vn/images/items/lg/Burger-Zinger.jpg?v=46obkg', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(21, 'Pepsi Không Calo', 2, 15000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/l/y/lypepsi-03.png', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(22, 'Mì Ý Sốt Bò Bằm', 1, 45000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/m/_/m__2.png', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(23, 'Phô Mai Viên', 3, 44000, 'https://static.kfcvietnam.com.vn/images/items/lg/6-Chewy-Cheese.jpg?v=46obkg', '2023-11-23', '2023-11-23', '2023-11-23'),
+	(24, 'Bánh Xoài Đào', 7, 10000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/p/m/pmp-plated.png', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(25, 'Tropical Sundae', 7, 20000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/k/e/kemsundae-06.png', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(26, 'Kem Ốc Quế Sữa Tươi', 7, 5000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/b/a/ba9d396f70568c-kemvani201.png', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(27, 'Kem Ốc Quế Socola', 7, 7000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/c/4/c400652c2a03e0-chocolateicecream01.png', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(28, 'Kem SUNDAES Dâu', 7, 15000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/d/0/d01402ed11976b-kemsundeadau.png', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(29, 'Kem SUNDAES Socola', 7, 15000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/1/9/192dcb48e7393a-kemsocola16.png', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(30, 'Salad Hạt', 3, 35000, 'https://static.kfcvietnam.com.vn/images/items/lg/SALAD-HAT.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(31, 'Salad Pop', 3, 35000, 'https://static.kfcvietnam.com.vn/images/items/lg/SALAD-HAT-GA-VIEN.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(32, 'Súp Rong Biển', 3, 17000, 'https://static.kfcvietnam.com.vn/images/items/lg/Soup-Rong-Bien.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(33, 'Pizza Bò Phô Mai', 1, 170000, 'https://img.dominos.vn/Menu+BG+1.jpg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(34, 'Pizza Rau Củ Thập Cẩm ', 1, 90000, 'https://img.dominos.vn/Veggie-mania-Pizza-Rau-Cu-Thap-Cam.jpg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(35, 'Pizza Phô Mai Truyền Thống', 1, 90000, 'https://img.dominos.vn/Pizza-Pho-Mai-Hao-Hang-Cheese-Mania.jpg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(36, 'Pizza Xúc Xích Ý Truyền Thống', 1, 115000, 'https://img.dominos.vn/Pepperoni-feast-Pizza-Xuc-Xich-Y.jpg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(37, 'Combo Nhóm 1', 6, 172000, 'https://static.kfcvietnam.com.vn/images/items/lg/D6.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(38, 'Combo Nhóm 2', 6, 190000, 'https://static.kfcvietnam.com.vn/images/items/lg/D7-new.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(39, 'Combo Nhóm 3', 6, 230000, 'https://static.kfcvietnam.com.vn/images/items/lg/D8-new.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(40, 'Combo Gà Rán', 6, 87000, 'https://static.kfcvietnam.com.vn/images/items/lg/D1-new.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(41, 'Combo Mì Ý', 6, 87000, 'https://static.kfcvietnam.com.vn/images/items/lg/D3-new.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(42, 'Combo Salad Hạt', 6, 80000, 'https://static.kfcvietnam.com.vn/images/items/lg/D4-new.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(43, 'Pasion Panna Cotta', 7, 35000, 'https://phuclong.com.vn/uploads/dish/a9686c8f36a908-passionpannacotta.png', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(44, 'Tiramisu Mini', 7, 35000, 'https://phuclong.com.vn/uploads/dish/dd626a9639b006-tiramisumini.png', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(45, 'Bánh Phô Mai Cà Phê', 7, 30000, 'https://www.highlandscoffee.com.vn/vnt_upload/product/03_2018/thumbs/270_crop_PHOMAICAPHE.jpg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(46, 'Bánh Phô Mai Chanh Dây', 7, 30000, 'https://www.highlandscoffee.com.vn/vnt_upload/product/03_2018/thumbs/270_crop_PHOMAICHANHDAY.jpg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(47, 'Bánh Phô Mai Trà Xanh', 7, 30000, 'https://www.highlandscoffee.com.vn/vnt_upload/product/03_2018/thumbs/270_crop_PHOMAITRAXANH.jpg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(48, 'Bánh Chuối', 7, 25000, 'https://www.highlandscoffee.com.vn/vnt_upload/product/03_2018/thumbs/270_crop_BANHCHUOI.jpg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(49, 'Combo Gà Que Kem Xốt Cajun A', 6, 90000, 'https://static.kfcvietnam.com.vn/images/items/lg/A-Cajun.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(50, 'Combo Gà Que Kem Xốt Cajuun B', 6, 90000, 'https://static.kfcvietnam.com.vn/images/items/lg/B-Cajun.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(51, '1 Gà Que Kem Xốt Cajun', 3, 40000, 'https://static.kfcvietnam.com.vn/images/items/lg/1-Cajun.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(52, '2 Gà Que Kem Xốt Cajun', 3, 80000, 'https://static.kfcvietnam.com.vn/images/items/lg/2-Cajun.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(53, 'Combo Gà Địa Trung Hải A', 6, 93000, 'https://static.kfcvietnam.com.vn/images/items/lg/combo-ga-cuon-dia-trung-hai-a.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(54, 'Combo Gà Địa Trung Hải B', 6, 199000, 'https://static.kfcvietnam.com.vn/images/items/lg/combo-ga-cuon-dia-trung-hai-c.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(55, '3 Gà Miếng Nuggets', 4, 27000, 'https://static.kfcvietnam.com.vn/images/items/lg/3_Nuggests.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(56, '5 Gà Miếng Nuggets', 4, 40000, 'https://static.kfcvietnam.com.vn/images/items/lg/5_Nuggests.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(57, '10 Gà Miếng Nuggets', 4, 75000, 'https://static.kfcvietnam.com.vn/images/items/lg/10_Nuggests.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(58, 'Xiên Que', 3, 20000, 'https://static.kfcvietnam.com.vn/images/items/lg/2-Skewers.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(59, 'Xiên Tenderods', 3, 20000, 'https://static.kfcvietnam.com.vn/images/items/lg/2-Tenderods.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(60, 'Cơm trộn Hàn Quốc', 1, 45000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5XLpeaxpGfCPsjbTlnSnzLxLwn1s0RTzD-g&usqp=CAU', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(61, 'Tokbokki', 1, 45000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRchqFsGMs-qu_31gPGOtIeYhIj41OyxLUatg&usqp=CAU', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(62, 'Tokbokki Phô Mai', 1, 60000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXa6lEr94nhSlIe-PVjAGDOANYhhej1ln-kA&usqp=CAU', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(63, 'Trà Chanh Lipton', 2, 15000, 'https://static.kfcvietnam.com.vn/images/items/lg/Lipton.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(64, 'Cơm Trắng', 1, 10000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/b/3/b3ad51b912e4e5-2mienggaran24.png', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(65, 'Súp Bí Đỏ', 3, 15000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/s/_/s_p_b_.png', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(66, 'Burger Gà Giòn', 5, 35000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/9/2/92d27d47dadbfc-hambugerlon.jpg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(67, 'Cơm Gà Bít Tết', 1, 45000, 'https://static.kfcvietnam.com.vn/images/items/lg/Rice-Steak.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(68, 'Cơm Gà Rán', 1, 45000, 'https://static.kfcvietnam.com.vn/images/items/lg/Rice-F.Chicken.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(69, 'AQUAFINA', 2, 15000, 'https://static.kfcvietnam.com.vn/images/items/lg/Aquafina-500ml.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24');
 
 -- Dumping structure for table thegioiamthuc.order
 CREATE TABLE IF NOT EXISTS `order` (

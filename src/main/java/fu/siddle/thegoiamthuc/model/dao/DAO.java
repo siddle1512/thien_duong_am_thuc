@@ -13,5 +13,11 @@ public interface DAO<T> {
     public List<T> getID(String id);
 
     public List<T> getSEARCH(String txt);
-    
+
+    public List<T> get4new();
+
+    public int getCountfood();
+
+    public List<T> getFoodoffset(String id);
+
 }
