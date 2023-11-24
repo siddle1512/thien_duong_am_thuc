@@ -50,17 +50,12 @@
     <body>
         <div class="hero_area">
             <div class="bg-box">
-                <img src="https://media.tenor.com/iVXar9PdSw8AAAAC/shadow-garden.gif" alt="">
+                <img src="${pageContext.request.contextPath}/assets/images/hero-bg.jpg" alt="">
             </div>
             <!-- header section strats -->
             <header class="header_section">
                 <div class="container">
                     <nav class="navbar navbar-expand-lg custom_nav-container ">
-                        <a class="navbar-brand" href="./logincontroller">
-                            <span>
-                                Thiên Đường Ẩm Thực
-                            </span>
-                        </a>
 
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class=""> </span>
