@@ -33,8 +33,10 @@ public class menucontroller extends HttpServlet {
         List<Category> listC = CategoryDAO.getInstance().getAll();
         session.setAttribute("listcate", listC);
 
-        System.out.println(listC.get(3).getId());
-        System.out.println(listC.get(3).getName());
+        //lay endpage counting
+        int countP = FooditemDAO.getInstance().getCountfood();
+
+        session.setAttribute("countP", countP);
 
         RequestDispatcher rd = request.getRequestDispatcher("views/web/menu.jsp");
         rd.forward(request, response);

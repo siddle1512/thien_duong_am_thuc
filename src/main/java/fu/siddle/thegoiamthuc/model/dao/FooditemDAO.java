@@ -117,4 +117,83 @@ public class FooditemDAO implements DAO<Fooditem> {
         return list;
     }
 
+    @Override
+    public List<Fooditem> get4new() {
+        List<Fooditem> list = new ArrayList<>();
+
+        try {
+            Connection conn = JDBC.getConnection();
+
+            PreparedStatement smt = conn.prepareStatement("SELECT * FROM fooditem ORDER BY id DESC LIMIT 4");
+
+            ResultSet rs = smt.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                int category_id = rs.getInt("category_id");
+                int price = rs.getInt("price");
+                String image = rs.getString("image");
+
+                list.add(new Fooditem(id, name, category_id, price, image));
+            }
+
+            JDBC.closeConnection(conn);
+
+        } catch (SQLException ex) {
+        }
+
+        return list;
+    }
+
+    @Override
+    public int getCountfood() {
+        int count = 0;
+
+        try {
+            Connection conn = JDBC.getConnection();
+
+            PreparedStatement smt = conn.prepareStatement("SELECT COUNT(*) FROM fooditem");
+
+            ResultSet rs = smt.executeQuery();
+
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+
+            JDBC.closeConnection(conn);
+
+        } catch (SQLException ex) {
+        }
+
+        return count;
+    }
+
+    @Override
+    public List<Fooditem> getFoodoffset(String id) {
+        List<Fooditem> list = new ArrayList<>();
+        int offset = Integer.parseInt(id); // Convert id to integer
+
+        try (Connection conn = JDBC.getConnection(); PreparedStatement smt = conn.prepareStatement("SELECT * FROM fooditem ORDER BY id LIMIT ?, 9")) {
+
+            smt.setInt(1, offset);
+            ResultSet rs = smt.executeQuery();
+
+            while (rs.next()) {
+                int cid = rs.getInt("id");
+                String name = rs.getString("name");
+                int category_id = rs.getInt("category_id");
+                int price = rs.getInt("price");
+                String image = rs.getString("image");
+
+                list.add(new Fooditem(cid, name, category_id, price, image));
+            }
+        } catch (SQLException ex) {
+            // Handle your exception here
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
+
 }

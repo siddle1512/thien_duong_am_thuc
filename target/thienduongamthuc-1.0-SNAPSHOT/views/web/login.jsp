@@ -1,10 +1,20 @@
+<%@page import="fu.siddle.thegoiamthuc.model.User"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
 <%
     String err = null;
     err = (String) session.getAttribute("err");
-%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.List"%>
+    String imagepath = null;
+
+    List<User> ul = (List<User>) session.getAttribute("listuserlogin");
+
+    if (ul != null) {
+        imagepath = ul.get(0).getAvatar_path();
+
+    }
+
+%>
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +31,7 @@
         <meta name="author" content="" />
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon.png" type="">
 
-        <title> Login - Page </title>
+        <title> Đăng nhập - TDAT </title>
 
         <!-- bootstrap core css -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
@@ -39,51 +49,52 @@
         <link href="${pageContext.request.contextPath}/assets/css/responsive.css" rel="stylesheet" />
     </head>
 
-    <body>
+    <body class="sub_page">
         <div class="hero_area">
-            <div class="bg-box">
-                <img src="https://cdn.dribbble.com/users/3951514/screenshots/7288432/media/866b49d81c982fdecd5a22de44c5e677.gif" alt="">
-            </div>
-            <%@include file="/views/layout/header.jsp" %>
+        </div>
+        <div class="hero_area">
+            <%@include file="../layout/header.jsp"%>
+        </div>
 
-            <section class="login_section layout_padding-bottom">
-                <div class="login_container">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6 offset-md-3">
-                                <div class="box">
-                                    <h2>Đăng nhập</h2>
-                                    <form action="./logincontroller" method="POST">
-                                        <div class="form-group">
-                                            <label for="username">Email</label>
-                                            <input type="email" class="form-control" id="username" name="email" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="password">Mật khẩu</label>
-                                            <div class="password-input d-flex align-items-center">
-                                                <input type="password" class="form-control mr-2" id="password" name="password" required>
-                                                <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Đăng nhập</button>
-                                    </form>
-                                    <div class="form-footer">
-                                        <%if (err == null) {%>
-                                        <p>Chưa có tài khoản? <a href="./registercontroller">Đăng kí</a></p>
-                                        <p>Quên mật khẩu? <a href="./registercontroller">Thay đổi</a></p>
-                                        <%} else {%>
-                                        <p style="color: red;"><%=err%></p>
-                                        <p>Chưa có tài khoản? <a href="./registercontroller">Đăng kí</a></p>
-                                        <p>Quên mật khẩu? <a href="./registercontroller">Thay đổi</a></p>
-                                        <%}%>
+        <section class="login_section layout_padding-bottom">
+            <div class="login_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <div class="box">
+                                <h2>Đăng nhập</h2>
+                                <form action="./logincontroller" method="POST">
+                                    <div class="form-group">
+                                        <label for="username">Email</label>
+                                        <input type="email" class="form-control" id="username" name="email" required>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="password">Mật khẩu</label>
+                                        <div class="password-input d-flex align-items-center">
+                                            <input type="password" class="form-control mr-2" id="password" name="password" required>
+                                            <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-dark">Đăng nhập</button>
+                                </form>
+                                <div class="form-footer">
+                                    <%if (err == null) {%>
+                                    <p>Chưa có tài khoản? <a href="./registercontroller">Đăng kí</a></p>
+                                    <%} else {%>
+                                    <p style="color: red;"><%=err%></p>
+                                    <p>Chưa có tài khoản? <a href="./registercontroller">Đăng kí</a></p>
+                                    <%}%>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
+        <div class="hero_area">
         </div>
+        <%@include file="/views/layout/footer.jsp" %>
 
         <!-- Add jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -160,10 +171,6 @@
                 transition: background-color 0.3s;
             }
 
-            button:hover {
-                background-color: #0056b3;
-            }
-
             .form-footer {
                 margin-top: 20px;
                 text-align: center;
@@ -179,8 +186,6 @@
                 color: #0056b3;
             }
         </style>       
-
-        <%@include file="/views/layout/footer.jsp" %>
 
         <!-- jQery -->
         <script src="${pageContext.request.contextPath}/assets/js/jquery-3.4.1.min.js"></script>

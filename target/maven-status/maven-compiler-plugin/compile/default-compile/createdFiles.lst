@@ -13,6 +13,7 @@ fu\siddle\thegoiamthuc\controller\aboutcontroller.class
 fu\siddle\thegoiamthuc\controller\adindexcontroller.class
 fu\siddle\thegoiamthuc\model\dao\DAO.class
 fu\siddle\thegoiamthuc\model\dao\UserDAO.class
+fu\siddle\thegoiamthuc\controller\endpagecontroller.class
 fu\siddle\thegoiamthuc\model\Category.class
 fu\siddle\thegoiamthuc\service\JDBC.class
 fu\siddle\thegoiamthuc\model\Fooditem.class

@@ -14,12 +14,6 @@
     object-fit: cover;
 }
 
-.logo-img {
-    width: 20%;
-    height: 20%;
-    object-fit: cover;
-}
-
 /* Define the styles for white and black text */
 .white-text {
     color: white;
