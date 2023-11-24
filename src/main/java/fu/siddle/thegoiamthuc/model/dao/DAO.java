@@ -9,4 +9,6 @@ public interface DAO<T> {
     public void insert(T obj);
 
     public List<T> get(String email);
+
+    public List<T> getID(String id);
 }

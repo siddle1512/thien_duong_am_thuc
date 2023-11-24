@@ -106,7 +106,13 @@ public class UserDAO implements DAO<User> {
 
         } catch (SQLException ex) {
         }
-        
+
         return list;
     }
+
+    @Override
+    public List<User> getID(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
