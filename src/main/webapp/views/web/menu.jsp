@@ -17,7 +17,7 @@
 
     }
 
-    int countP = (int) session.getAttribute("countP");
+    int countP = (int) session.getAttribute("endPage");
 
     String keysearch = (String) session.getAttribute("keysearch");
 
@@ -152,16 +152,21 @@
         <!--end food section -->
 
         <div class="heading_container heading_center">
-            <div>
-                <a href="./endpagecontroller?id=${id - 9}" class="black-text">Trang trước</a>
-                <%for (int i = 1; i <= countP; i = i + 9) {%>
+            <div class="pagination">
+                <div class="pagination-links">
 
-                <a href="./endpagecontroller?id=<%=i%>" class="black-text"><%=i%></a>
+                    <% int count = 0;
+                        for (int i = 1; i <= countP; i++) {%>
+                    <a href="./endpagecontroller?id=<%=i%>" class="pagination-link "}"><%=i%></a>
+                    <%count++;%>
 
-                <%}%>
-                <a href="./endpagecontroller?id=${id + 9}" class="black-text">Trang sau</a>
+                    <% }%>
+
+                </div>
             </div>
         </div>
+
+        <br><br/>
         <br><br/>
 
         <%@include file="/views/layout/footer.jsp" %>

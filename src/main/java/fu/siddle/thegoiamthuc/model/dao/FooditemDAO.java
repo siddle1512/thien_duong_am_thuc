@@ -172,11 +172,12 @@ public class FooditemDAO implements DAO<Fooditem> {
     @Override
     public List<Fooditem> getFoodoffset(String id) {
         List<Fooditem> list = new ArrayList<>();
-        int offset = Integer.parseInt(id); // Convert id to integer
+
+        int offset = Integer.parseInt(id);
 
         try (Connection conn = JDBC.getConnection(); PreparedStatement smt = conn.prepareStatement("SELECT * FROM fooditem ORDER BY id LIMIT ?, 9")) {
 
-            smt.setInt(1, offset);
+            smt.setInt(1, (offset - 1) * 9);
             ResultSet rs = smt.executeQuery();
 
             while (rs.next()) {
@@ -188,6 +189,7 @@ public class FooditemDAO implements DAO<Fooditem> {
 
                 list.add(new Fooditem(cid, name, category_id, price, image));
             }
+            JDBC.closeConnection(conn);
         } catch (SQLException ex) {
             // Handle your exception here
             ex.printStackTrace();

@@ -24,7 +24,8 @@ public class menucontroller extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
 
-        List<Fooditem> listF = FooditemDAO.getInstance().getAll();
+        String id = "1";
+        List<Fooditem> listF = FooditemDAO.getInstance().getFoodoffset(id);
 
         HttpSession session = request.getSession();
 
@@ -35,8 +36,14 @@ public class menucontroller extends HttpServlet {
 
         //lay endpage counting
         int countP = FooditemDAO.getInstance().getCountfood();
+        System.out.println(countP);
 
-        session.setAttribute("countP", countP);
+        int endPage = countP / 9;
+        if (countP % 9 != 0) {
+            endPage++;
+        }
+
+        session.setAttribute("endPage", endPage);
 
         RequestDispatcher rd = request.getRequestDispatcher("views/web/menu.jsp");
         rd.forward(request, response);

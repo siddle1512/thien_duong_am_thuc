@@ -25,81 +25,118 @@
 
 /* Reset default margin and padding */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* Basic styles for header and navigation */
 header {
-  background-color: #333;
-  color: #fff;
-  padding: 10px 0;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
 }
 
 nav ul {
-  list-style: none;
+    list-style: none;
 }
 
 nav ul li {
-  display: inline;
-  margin-right: 20px;
+    display: inline;
+    margin-right: 20px;
 }
 
 nav ul li a {
-  color: #fff;
-  text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 
 /* Container styles */
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* Product details section */
 .product-details {
-  padding: 40px 0;
+    padding: 40px 0;
 }
 
 .product-info {
-  margin-left: 20px;
+    margin-left: 20px;
 }
 
 .product-images img {
-  max-width: 100%;
-  height: auto;
-  border: 1px solid #ddd;
-  padding: 10px;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
 }
 
 .stars {
-  color: gold;
+    color: gold;
 }
 
 .quantity {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 /* Related products section */
 .related-products {
-  background-color: #f5f5f5;
-  padding: 40px 0;
+    background-color: #f5f5f5;
+    padding: 40px 0;
 }
 
 .product-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .product {
-  width: 250px;
-  margin: 20px 0;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  text-align: center;
+    width: 250px;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    text-align: center;
 }
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination-links {
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.pagination-link {
+    color: #333;
+    text-decoration: none;
+    padding: 6px 10px;
+    margin: 0 3px;
+    border-radius: 4px;
+}
+
+.pagination-link.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.pagination-link.prev,
+.pagination-link.next {
+    font-weight: bold;
+}
+
+.pagination-link.prev:hover,
+.pagination-link.next:hover,
+.pagination-link:not(.active):hover {
+    background-color: #f0f0f0;
+}
+
 
