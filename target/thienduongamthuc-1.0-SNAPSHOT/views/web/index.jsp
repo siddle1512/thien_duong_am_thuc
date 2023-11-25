@@ -113,9 +113,9 @@
                         <%}%>
                     </div>
                 </div>
-            </div>                    <!-- end offer section -->
+            </div>                   
         </section>
-
+        <!-- end offer section -->
 
         <!-- jQery -->
         <script src="${pageContext.request.contextPath}/assets/js/jquery-3.4.1.min.js"></script>

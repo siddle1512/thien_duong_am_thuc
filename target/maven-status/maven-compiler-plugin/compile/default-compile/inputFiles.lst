@@ -6,6 +6,7 @@ D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\se
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\controller\registercontroller.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\model\User.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\controller\adindexcontroller.java
+D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\controller\cartcontroller.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\controller\logincontroller.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\service\JDBC.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\controller\menucontroller.java
@@ -13,6 +14,7 @@ D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\mo
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\model\Category.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\controller\indexcontroller.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\controller\logoutcontroller.java
+D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\controller\detailcontroller.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\model\dao\FooditemDAO.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\controller\endpagecontroller.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\model\Fooditem.java

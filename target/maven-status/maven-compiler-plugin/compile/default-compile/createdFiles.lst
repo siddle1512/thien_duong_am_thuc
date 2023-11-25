@@ -9,6 +9,7 @@ fu\siddle\thegoiamthuc\controller\registercontroller.class
 fu\siddle\thegoiamthuc\controller\indexcontroller.class
 fu\siddle\thegoiamthuc\model\dao\CategoryDAO.class
 fu\siddle\thegoiamthuc\controller\menucontroller.class
+fu\siddle\thegoiamthuc\controller\detailcontroller.class
 fu\siddle\thegoiamthuc\controller\aboutcontroller.class
 fu\siddle\thegoiamthuc\controller\adindexcontroller.class
 fu\siddle\thegoiamthuc\model\dao\DAO.class
@@ -19,3 +20,4 @@ fu\siddle\thegoiamthuc\service\JDBC.class
 fu\siddle\thegoiamthuc\model\Fooditem.class
 fu\siddle\thegoiamthuc\model\dao\FooditemDAO.class
 fu\siddle\thegoiamthuc\service\Hash.class
+fu\siddle\thegoiamthuc\controller\cartcontroller.class

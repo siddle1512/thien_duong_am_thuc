@@ -34,7 +34,7 @@ public class searchcontroller extends HttpServlet {
         session.setAttribute("listfood", list);
         session.setAttribute("keysearch", query);
 
-        RequestDispatcher rd = request.getRequestDispatcher("views/web/menu.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("views/web/menu_1.jsp");
         rd.forward(request, response);
     }
 

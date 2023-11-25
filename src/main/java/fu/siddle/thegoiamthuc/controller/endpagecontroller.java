@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package fu.siddle.thegoiamthuc.controller;
 
 import fu.siddle.thegoiamthuc.model.Fooditem;
@@ -62,8 +58,9 @@ public class endpagecontroller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("id");
-        List<Fooditem> listF = FooditemDAO.getInstance().getFoodoffset(id);
+        String i = request.getParameter("id");
+        int id = Integer.parseInt(i);
+        List<Fooditem> listF = FooditemDAO.getInstance().getFoodoffset(i);
 
         HttpSession session = request.getSession();
         session.setAttribute("listfood", listF);
@@ -72,9 +69,6 @@ public class endpagecontroller extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("views/web/menu.jsp");
         rd.forward(request, response);
 
-        for (Fooditem f : listF) {
-            System.out.println(f.getName());
-        }
     }
 
     /**

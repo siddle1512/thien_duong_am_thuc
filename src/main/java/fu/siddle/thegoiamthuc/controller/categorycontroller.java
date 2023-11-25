@@ -30,7 +30,7 @@ public class categorycontroller extends HttpServlet {
         session.setAttribute("cid", cid);
         session.setAttribute("listfood", listF);
 
-        RequestDispatcher rd = request.getRequestDispatcher("views/web/menu.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("views/web/menu_1.jsp");
         rd.forward(request, response);
 
     }
