@@ -117,6 +117,36 @@
         </section>
         <!-- end offer section -->
 
+        <!-- about section -->
+        <section class="about_section layout_padding">
+            <div class="container  ">
+
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div class="img-box">
+                            <img src="${pageContext.request.contextPath}/assets/images/about-img.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-box">
+                            <div class="heading_container">
+                                <h2>
+                                    Chúng Tôi Là Thiên Đường Ẩm Thực
+                                </h2>
+                            </div>
+                            <p>
+                                Ăn là thich - đã thích là hết tiền.
+                            </p>
+                            <a href="./indexcontroller">
+                                Nhiều hơn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end about section -->
+
         <!-- jQery -->
         <script src="${pageContext.request.contextPath}/assets/js/jquery-3.4.1.min.js"></script>
         <!-- popper js -->

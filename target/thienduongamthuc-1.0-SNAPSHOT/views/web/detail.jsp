@@ -14,6 +14,8 @@
 
     List<Fooditem> listf = (List<Fooditem>) session.getAttribute("listf");
 
+    List<Fooditem> listfdetail = (List<Fooditem>) session.getAttribute("listdetailf");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -57,41 +59,43 @@
         </div>
 
         <!-- Product Details Section Begin -->
-        <section class="product-details spad">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="product__details__pic">
-                            <div class="product__details__pic__item">
-                                <img class="product__details__pic__item--large"
-                                     src="https://xwatch.vn/upload_images/images/2023/03/10/1-anh-anime-la-gi.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="product__details__text">
-                            <h3>Vetgetable’s Package</h3>
-                            <div class="product__details__rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-o"></i>
-                            </div>
-                            <div class="product__details__price">35000₫</div>
-                            <div class="product__details__quantity">
-                                <div class="quantity">
-                                    <div class="pro-qty">
-                                        <input type="text" value="1">
-                                    </div>
+        <section class="food_section layout_padding">
+            <div class="heading_container heading_center">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-sm-6 col-lg-4 all pizza">
+                            <div class="product__details__pic">
+                                <div class="img-box">
+                                    <img src="<%=listfdetail.get(0).getImage()%>" alt="">
                                 </div>
                             </div>
-                            <%if (ul == null) {%>
-                            <a href="./logincontroller" class="primary-btn">Thêm vào rỏ hàng</a>
-                            <%} else {%>
-                            <a href="./cartcontroller" class="primary-btn">Thêm vào rỏ hàng</a>
-                            <%}%>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="product__details__text">
+                                <h3><%=listfdetail.get(0).getName()%></h3>
+                                <div class="product__details__rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o"></i>
+                                </div>
+                                <div class="product__details__price"><%=listfdetail.get(0).getPrice()%>₫</div>
+                                <div class="product__details__quantity">
+                                    <div class="quantity">
+                                        <div class="pro-qty">
+                                            <input type="text" value="1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <%if (ul == null) {%>
+                                <a href="./logincontroller" class="btn btn-dark">Thêm vào rỏ hàng</a>
+                                <%} else {%>
+                                <a href="./cartcontroller" class="btn btn-dark">Thêm vào rỏ hàng</a>
+                                <%}%>
 
+                            </div>
                         </div>
                     </div>
                 </div>

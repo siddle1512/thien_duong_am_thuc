@@ -198,4 +198,34 @@ public class FooditemDAO implements DAO<Fooditem> {
         return list;
     }
 
+    @Override
+    public List<Fooditem> getFid(String id) {
+        List<Fooditem> list = new ArrayList<>();
+
+        try {
+            Connection conn = JDBC.getConnection();
+
+            PreparedStatement smt = conn.prepareStatement("SELECT * FROM fooditem WHERE id = ?");
+            smt.setString(1, id);
+
+            ResultSet rs = smt.executeQuery();
+
+            while (rs.next()) {
+                int fid = rs.getInt("id");
+                String name = rs.getString("name");
+                int category_id = rs.getInt("category_id");
+                int price = rs.getInt("price");
+                String image = rs.getString("image");
+
+                list.add(new Fooditem(fid, name, category_id, price, image));
+            }
+
+            JDBC.closeConnection(conn);
+
+        } catch (SQLException ex) {
+        }
+
+        return list;
+    }
+
 }

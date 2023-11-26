@@ -20,4 +20,6 @@ public interface DAO<T> {
 
     public List<T> getFoodoffset(String id);
 
+    public List<T> getFid(String id);
+
 }
