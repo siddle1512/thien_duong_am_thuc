@@ -47,6 +47,10 @@
     </head>
 
     <body class="sub_page">
+        <!-- Page Preloder -->
+        <div id="preloder">
+            <div class="loader"></div>
+        </div>
         <div class="hero_area">
             <%@include file="../layout/header.jsp"%>
         </div>

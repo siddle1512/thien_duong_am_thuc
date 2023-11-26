@@ -51,7 +51,6 @@ public class registercontroller extends HttpServlet {
 
         // Uploading vao thu muc
         try {
-
             FileOutputStream fos = new FileOutputStream(uploadPath);
             InputStream is = file.getInputStream();
 

@@ -1,6 +1,8 @@
 package fu.siddle.thegoiamthuc.controller;
 
+import fu.siddle.thegoiamthuc.model.Category;
 import fu.siddle.thegoiamthuc.model.Fooditem;
+import fu.siddle.thegoiamthuc.model.dao.CategoryDAO;
 import fu.siddle.thegoiamthuc.model.dao.FooditemDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -22,13 +24,19 @@ public class indexcontroller extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
 
+        //all fooditem
+        String id = "1";
+        List<Fooditem> listF = FooditemDAO.getInstance().getFoodoffset(id);
+        HttpSession session = request.getSession();
+
+        session.setAttribute("listfood", listF);
+
         //kiem tra data
         List<Fooditem> listf = FooditemDAO.getInstance().get4new();
         for (Fooditem f : listf) {
             System.out.println(f.getName());
         }
 
-        HttpSession session = request.getSession();
         session.setAttribute("listf", listf);
 
         RequestDispatcher rd = request.getRequestDispatcher("views/web/index.jsp");
