@@ -31,10 +31,9 @@ CREATE TABLE IF NOT EXISTS `admin` (
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table thegioiamthuc.admin: ~2 rows (approximately)
+-- Dumping data for table thegioiamthuc.admin: ~1 rows (approximately)
 INSERT INTO `admin` (`id`, `username`, `hashed_password`, `create_at`, `update_at`, `delete_at`) VALUES
-	(1, 'siddle@gmail.com', 'siddle', '0000-00-00', '0000-00-00', '2023-11-18'),
-	(2, 'admin@gmail.com', '123', '2023-11-18', '2023-11-18', '2023-11-18');
+	(1, 'siddle@gmail.com', 'siddle', '2023-11-18', '2023-11-18', '2023-11-18');
 
 -- Dumping structure for table thegioiamthuc.category
 CREATE TABLE IF NOT EXISTS `category` (
@@ -69,9 +68,9 @@ CREATE TABLE IF NOT EXISTS `fooditem` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `FK1_Category` (`category_id`),
   CONSTRAINT `FK1_Category` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table thegioiamthuc.fooditem: ~69 rows (approximately)
+-- Dumping data for table thegioiamthuc.fooditem: ~70 rows (approximately)
 INSERT INTO `fooditem` (`id`, `name`, `category_id`, `price`, `image`, `create_at`, `update_at`, `delete_at`) VALUES
 	(1, 'Cơm Gà Teriyaki', 1, 45000, 'https://static.kfcvietnam.com.vn/images/items/lg/Rice-Teriyaki.jpg?v=46obkg', '2023-11-23', '2023-11-23', '2023-11-23'),
 	(2, 'Cơm Gà Tenderods', 1, 45000, 'https://static.kfcvietnam.com.vn/images/items/lg/Rice-TENDERODS.jpg?v=46obkg', '2023-11-23', '2023-11-23', '2023-11-23'),
@@ -141,7 +140,8 @@ INSERT INTO `fooditem` (`id`, `name`, `category_id`, `price`, `image`, `create_a
 	(66, 'Burger Gà Giòn', 5, 35000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/9/2/92d27d47dadbfc-hambugerlon.jpg', '2023-11-24', '2023-11-24', '2023-11-24'),
 	(67, 'Cơm Gà Bít Tết', 1, 45000, 'https://static.kfcvietnam.com.vn/images/items/lg/Rice-Steak.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
 	(68, 'Cơm Gà Rán', 1, 45000, 'https://static.kfcvietnam.com.vn/images/items/lg/Rice-F.Chicken.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
-	(69, 'AQUAFINA', 2, 15000, 'https://static.kfcvietnam.com.vn/images/items/lg/Aquafina-500ml.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24');
+	(69, 'AQUAFINA', 2, 15000, 'https://static.kfcvietnam.com.vn/images/items/lg/Aquafina-500ml.jpg?v=46obkg', '2023-11-24', '2023-11-24', '2023-11-24'),
+	(71, 'Lẩu gà lá é', 1, 80000, 'https://i-giadinh.vnecdn.net/2022/12/08/Buoc-7-Thanh-pham-7-3595-1670471747.jpg', '2023-11-27', '2023-11-27', '2023-11-27');
 
 -- Dumping structure for table thegioiamthuc.order
 CREATE TABLE IF NOT EXISTS `order` (
@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `order` (
   `user_id` int(11) NOT NULL,
   `total_price` bigint(20) NOT NULL DEFAULT 0,
   `payment` enum('cash','vnpay') NOT NULL,
-  `status` enum('processing','shipping','done','canceled') NOT NULL,
+  `status` enum('processing','shipping','done','canceled') DEFAULT NULL,
   `create_at` date DEFAULT current_timestamp(),
   `update_at` date DEFAULT current_timestamp(),
   `delete_at` date DEFAULT current_timestamp(),
@@ -190,17 +190,13 @@ CREATE TABLE IF NOT EXISTS `user` (
   `delete-at` date NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table thegioiamthuc.user: ~7 rows (approximately)
+-- Dumping data for table thegioiamthuc.user: ~3 rows (approximately)
 INSERT INTO `user` (`id`, `username`, `birth_year`, `gender`, `email`, `hashed_password`, `avatar_path`, `adress`, `status`, `create_at`, `update_at`, `delete-at`) VALUES
-	(9, 'manh', 2003, 'nam', 'm@gmail.com', '9ec6579cb8ac60c462e6b6812ec5c91569e9d06fdc3a671721ee703702d1ac99', '1166009.jpg', 'phu yen', 'activate', '2023-11-24', '2023-11-24', '2023-11-24'),
-	(10, 'binh', 2002, 'nam', 'b@gmail.com', 'e7010e40c59fd8d4b0760d9bf1c43e35f09cc9fd016f07bc8384c2b605aade3f', 'aa7c1150d67b3ce332c84a90423072f5.gif', '5/30 Lê Hồng Phong', 'activate', '2023-11-24', '2023-11-24', '2023-11-24'),
-	(11, 'quang', 2003, 'nam', 'q@gmail.com', '367a4f89913d7ac484ebbd68c9e52287b234d3aaf85d7673821f88ecf405c361', 'image.jpg', 'Phú yên', 'activate', '2023-11-24', '2023-11-24', '2023-11-24'),
-	(12, 'Manhha', 2003, 'nam', 'manhquocha12@gmail.com', '028720da0bcac4185d5403eae91bed3319714b8588f4fb9eb7f324569cb6c2e7', '', '114/48/12 Phạm Văn Chiêu Gò Vấp ', 'activate', '2023-11-24', '2023-11-24', '2023-11-24'),
-	(13, 'Tuan', 2003, 'nam', 't@gmail.com', '7e8e92db105a9da763efc112e3907d703fffd6ee4fec3c2131899609689d39a6', 'ABE07234-B7CF-49F2-8B12-D122FFFF4350.jpeg', 'Hbs', 'activate', '2023-11-24', '2023-11-24', '2023-11-24'),
-	(14, 'binhbobo', 1986, 'nam', 'binhbo@gmail.com', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'swiss-plateau-lone-5120x2880-13261.jpg', 'fpt', 'activate', '2023-11-24', '2023-11-24', '2023-11-24'),
-	(15, 'Kedandon', 2003, 'nam', 'tnq2024@gmail.com', '9ad3dcc010b59e09e2ae21909ad73d6e571403b054fe50e9141431be16ee40ee', 'FqsHcVTakAEoek5.jfif', 'alaalaalaa', 'activate', '2023-11-24', '2023-11-24', '2023-11-24');
+	(26, 'siddle', 2003, 'nam', 'b@gmail.com', 'e7010e40c59fd8d4b0760d9bf1c43e35f09cc9fd016f07bc8384c2b605aade3f', 'aa7c1150d67b3ce332c84a90423072f5.gif', '5/30 Le Hong Phong', 'activate', '2023-11-26', '2023-11-26', '2023-11-26'),
+	(27, 'TuanDiem', 2003, 'nam', 'h@gmail.com', 'aaa9402664f1a41f40ebbc52c9993eb66aeb366602958fdfaa283b71e64db123', '396293123_1505949916847510_790371987468921811_n.jpg', '5/30 Lê Hồng Phong', 'activate', '2023-11-27', '2023-11-27', '2023-11-27'),
+	(28, 'Kirby', 2003, 'nam', 'tnq2024@gmail.com', '9ad3dcc010b59e09e2ae21909ad73d6e571403b054fe50e9141431be16ee40ee', 'FqsHcVTakAEoek5.jfif', 'alaalaalaa', 'activate', '2023-11-27', '2023-11-27', '2023-11-27');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
