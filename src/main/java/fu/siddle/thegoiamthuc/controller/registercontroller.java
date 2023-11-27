@@ -47,10 +47,14 @@ public class registercontroller extends HttpServlet {
         //phan hinh anh
         Part file = request.getPart("profilePicture");
         String imageFileName = file.getSubmittedFileName();
-        String uploadPath = "D:/webjava/thienduong_amthuc/src/main/webapp/assets/images/" + imageFileName;
 
-        // Uploading vao thu muc
+        String uploadPath = "D:/webjava/amthucnew/thien_duong_am_thuc/src/main/webapp/assets/images/" + imageFileName;
+
+        System.out.println("Upload Path : " + uploadPath);
+
+        /// Uploading our selected image into the images folder
         try {
+
             FileOutputStream fos = new FileOutputStream(uploadPath);
             InputStream is = file.getInputStream();
 

@@ -1,0 +1,228 @@
+/* CSS styles */
+.user-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgb(255 255 255 / 6%);
+
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Define the styles for white and black text */
+.white-text {
+    color: white;
+}
+
+.black-text {
+    color: black;
+}
+
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic styles for header and navigation */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Product details section */
+.product-details {
+    padding: 40px 0;
+}
+
+.product-info {
+    margin-left: 20px;
+}
+
+.product-images img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.stars {
+    color: gold;
+}
+
+.quantity {
+    margin-top: 10px;
+}
+
+/* Related products section */
+.related-products {
+    background-color: #f5f5f5;
+    padding: 40px 0;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.product {
+    width: 250px;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination-links {
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.pagination-link {
+    color: #333;
+    text-decoration: none;
+    padding: 6px 10px;
+    margin: 0 3px;
+    border-radius: 4px;
+}
+
+.pagination-link.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.pagination-link.prev,
+.pagination-link.next {
+    font-weight: bold;
+}
+
+.pagination-link.prev:hover,
+.pagination-link.next:hover,
+.pagination-link:not(.active):hover {
+    background-color: #f0f0f0;
+}
+
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic styling for the product details */
+.product-details {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    display: flex;
+}
+
+/* Styles for product gallery */
+.product-gallery {
+    position: relative;
+}
+
+.product-gallery img {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.thumbnails img {
+    width: 50px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+/* Styles for product information */
+.product-info {
+    padding-left: 20px;
+}
+
+.product-name {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.price-add-cart {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.product-price {
+    font-size: 22px;
+    margin-right: 20px;
+}
+
+.add-to-cart-btn {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* Additional details section */
+.additional-details p {
+    margin-bottom: 5px;
+}
+
+/* Social share icons */
+.social-share {
+    margin-top: 15px;
+}
+
+.social-share a {
+    margin-right: 10px;
+    color: #666;
+}
+
+/* Active state for thumbnail image */
+.thumbnails img.active {
+    border: 2px solid #3498db;
+}
+
+
