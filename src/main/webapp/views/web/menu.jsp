@@ -200,6 +200,7 @@
                                                         </tr>
                                                     </thead>
 
+                                                    <c:set var="s" value="${0}"/>
                                                     <c:set var="o" value="${sessionScope.cart}"/>
                                                     <c:set var="t" value="0"/>
 
@@ -208,9 +209,12 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>${i.fooditem.name}</td>
-                                                                <td>35000₫</td>
-                                                                <td>1</td>
-                                                                <td>35000₫</td>
+                                                                <td>${i.price}₫</td>
+                                                                <td>${i.quantity}</td>
+                                                                <td>${i.price*i.quantity}₫</td>
+
+                                                                <!--sum-->
+                                                                ${s = s + i.price*i.quantity}
                                                                 <td>
                                                                     <a href="#" class="btn btn-danger btn-sm">
                                                                         <i class="fa fa-times"></i>
@@ -218,12 +222,12 @@
                                                                 </td>
                                                             </tr>
                                                         </tbody>
-                                                        
+
                                                     </c:forEach>
                                                 </table> 
 
                                                 <div class="d-flex justify-content-end">
-                                                    <h4><span class="price text-success">35000₫</span></h4>
+                                                    <h4><span class="price text-success">${s}₫</span></h4>
                                                 </div>
                                             </div>
                                             <div class="modal-footer border-top-0 d-flex justify-content-between">
