@@ -21,12 +21,14 @@ public class endpagecontroller extends HttpServlet {
             throws ServletException, IOException {
         String i = request.getParameter("id");
         int id = Integer.parseInt(i);
-        
+
         List<Fooditem> listF = FooditemDAO.getInstance().getFoodoffset(i);
 
         HttpSession session = request.getSession();
         session.setAttribute("listfood", listF);
+
         session.setAttribute("id", id);
+        request.setAttribute("active", id);
 
         RequestDispatcher rd = request.getRequestDispatcher("views/web/menu.jsp");
         rd.forward(request, response);

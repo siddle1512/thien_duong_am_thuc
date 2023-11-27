@@ -110,7 +110,7 @@ nav ul li a {
 
 .pagination-links {
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid #ccc0;
     border-radius: 4px;
     padding: 8px;
 }
@@ -124,7 +124,7 @@ nav ul li a {
 }
 
 .pagination-link.active {
-    background-color: #007bff;
+    background-color: #ffbe33;
     color: #fff;
 }
 

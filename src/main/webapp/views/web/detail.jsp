@@ -91,7 +91,7 @@
                                     </div>
                                 </div>
                                 <%if (ul == null) {%>
-                                <a href="./logincontroller" class="btn btn-dark">Thêm vào rỏ hàng</a>
+                                <a href="./logincontroller" class="btn btn-dark">Thêm vào giỏ hàng</a>
                                 <%} else {%>                                              
                                 <input type="submit" class="btn btn-dark" onclick="buy(<%=listfdetail.get(0).getId()%>)" value="Thêm vào rỏ hàng"/>
                                 <%}%>

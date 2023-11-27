@@ -39,8 +39,8 @@ public class menucontroller extends HttpServlet {
         //lay endpage counting
         int countP = FooditemDAO.getInstance().getCountfood();
 
-        int endPage = countP / 9;
-        if (countP % 9 != 0) {
+        int endPage = countP / 6;
+        if (countP % 6 != 0) {
             endPage++;
         }
 

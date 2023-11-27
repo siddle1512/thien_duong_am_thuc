@@ -89,11 +89,14 @@
                         <a href="./menucontroller" class="white-text">All</a>
                     </li>
 
-                    <% for (Category c : listcate) {%>
-                    <li >
-                        <a href="./categorycontroller?id=<%= c.getId()%>" class="black-text"><%= c.getName()%></a>
-                    </li>
-                    <% } %>
+                    <c:set var="c" value="${sessionScope.listcate}"/>
+                    <c:forEach items="${c}" var="i">
+
+                        <li>
+                            <a href="./categorycontroller?id=${i.id}" class="black-text ">${i.name}</a>
+                        </li>
+
+                    </c:forEach>
                 </ul>
 
                 <div class="filters-content">

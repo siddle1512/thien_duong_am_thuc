@@ -175,9 +175,9 @@ public class FooditemDAO implements DAO<Fooditem> {
 
         int offset = Integer.parseInt(id);
 
-        try (Connection conn = JDBC.getConnection(); PreparedStatement smt = conn.prepareStatement("SELECT * FROM fooditem ORDER BY id LIMIT ?, 9")) {
+        try (Connection conn = JDBC.getConnection(); PreparedStatement smt = conn.prepareStatement("SELECT * FROM fooditem ORDER BY id LIMIT ?, 6")) {
 
-            smt.setInt(1, (offset - 1) * 9);
+            smt.setInt(1, (offset - 1) * 6);
             ResultSet rs = smt.executeQuery();
 
             while (rs.next()) {

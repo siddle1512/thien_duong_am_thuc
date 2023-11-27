@@ -51,6 +51,11 @@ public class buycontroller extends HttpServlet {
         try {
             num = Integer.parseInt(num_request);
             id = Integer.parseInt(id_request);
+            //handle input
+
+            if (num < 0) {
+                num = 1;
+            }
 
             List<Fooditem> l = FooditemDAO.getInstance().getFid(id_request);
             Fooditem f = l.get(0);

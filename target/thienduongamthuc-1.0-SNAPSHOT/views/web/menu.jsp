@@ -165,7 +165,7 @@
                                         </g>
                                         </svg>
                                     </a>
-
+                                    <h6>${sessionScope.size}</h6>
                                     <a href="./logoutcontroller" class="order_online">
                                         Thoát
                                     </a>
@@ -216,7 +216,7 @@
                                                                 <!--sum-->
                                                                 ${s = s + i.price*i.quantity}
                                                                 <td>
-                                                                    <a href="#" class="btn btn-danger btn-sm">
+                                                                    <a href="./processcontroller?fid=${i.fooditem.id}" class="btn btn-danger btn-sm">
                                                                         <i class="fa fa-times"></i>
                                                                     </a>
                                                                 </td>
@@ -227,12 +227,17 @@
                                                 </table> 
 
                                                 <div class="d-flex justify-content-end">
-                                                    <h4><span class="price text-success">${s}₫</span></h4>
+                                                    <h4><span class="price text-success">Tổng cộng ${sessionScope.size} món: ${s}₫</span></h4>
                                                 </div>
                                             </div>
                                             <div class="modal-footer border-top-0 d-flex justify-content-between">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                                                <a href="https://scontent.fsgn2-7.fna.fbcdn.net/v/t1.15752-9/405336103_879670187103411_7919669060763491826_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeGjg0gL174ILbEyA8eVev3DvS9vFKXRmNq9L28UpdGY2mS_LcZ8nO68hUky-7e1CqR9XkBRLO3peh6Cbu_vxjI3&_nc_ohc=vB17AMc0VRMAX8Cxh8V&_nc_ht=scontent.fsgn2-7.fna&oh=03_AdSE0hCFlD_5Ae-zDr5wjfNCxkn71G3Im0Kc6cvZo5IMRg&oe=658C61F6">
+                                                    Đi đên thanh toán
+                                                </a>
+                                                <!--
                                                 <button type="button" class="btn btn-success">Đi đên thanh toán</button>
+                                                -->
 
                                             </div>
                                         </div>
@@ -275,11 +280,14 @@
                         <a href="./menucontroller" class="white-text">All</a>
                     </li>
 
-                    <% for (Category c : listcate) {%>
-                    <li >
-                        <a href="./categorycontroller?id=<%= c.getId()%>" class="black-text"><%= c.getName()%></a>
-                    </li>
-                    <% } %>
+                    <c:set var="c" value="${sessionScope.listcate}"/>
+                    <c:forEach items="${c}" var="i">
+
+                        <li>
+                            <a href="./categorycontroller?id=${i.id}" class="black-text ">${i.name}</a>
+                        </li>
+
+                    </c:forEach>
                 </ul>
 
                 <div class="filters-content">
@@ -341,12 +349,9 @@
             <div class="pagination">
                 <div class="pagination-links">
 
-                    <% int count = 0;
-                        for (int i = 1; i <= countP; i++) {%>
-                    <a href="./endpagecontroller?id=<%=i%>" class="pagination-link "}"><%=i%></a>
-                    <%count++;%>
-
-                    <% }%>
+                    <c:forEach  begin="1" end="${sessionScope.endPage}" var="i">
+                        <a href="./endpagecontroller?id=${i}" class="pagination-link ${requestScope.active == i ? "active" : " "}  ">${i}</a>
+                    </c:forEach>
 
                 </div>
             </div>

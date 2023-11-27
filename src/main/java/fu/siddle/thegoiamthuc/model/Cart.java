@@ -31,7 +31,7 @@ public class Cart {
 
     public Item getItemById(int id) {
         for (Item i : items) {
-            if (i.getFooditem().id == id) {
+            if (i.getFooditem().getId() == id) {
                 return i;
             }
         }

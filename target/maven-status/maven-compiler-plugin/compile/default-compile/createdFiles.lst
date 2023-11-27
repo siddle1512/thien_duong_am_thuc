@@ -12,6 +12,7 @@ fu\siddle\thegoiamthuc\service\Hash.class
 fu\siddle\thegoiamthuc\controller\logoutcontroller.class
 fu\siddle\thegoiamthuc\model\User.class
 fu\siddle\thegoiamthuc\controller\logincontroller.class
+fu\siddle\thegoiamthuc\controller\processcontroller.class
 fu\siddle\thegoiamthuc\model\dao\AdminDAO.class
 fu\siddle\thegoiamthuc\controller\searchcontroller.class
 fu\siddle\thegoiamthuc\controller\indexcontroller.class

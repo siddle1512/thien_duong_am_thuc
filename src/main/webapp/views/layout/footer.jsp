@@ -30,19 +30,24 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 footer-col">
-                <div class="footer_detail">
-                    <a href="" class="footer-logo">
-                        Thiên Đường Ẩm Thực
-                    </a>
 
-                    <div class="footer_social">
+            <div class="col-md-4 footer-col">
+                <div class="footer_contact">
+                    <h4>
+                        Thiên đường ẩm thực
+                    </h4>
+                    <div class="contact_link_box">
                         <a href="">
-                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                            <i class="fa " aria-hidden="true"></i>
+                            <span>
+                                Github
+                            </span>
                         </a>
+
                     </div>
                 </div>
             </div>
+
             <div class="col-md-4 footer-col">
                 <h4>
                     Thời Gian Mở Cửa
