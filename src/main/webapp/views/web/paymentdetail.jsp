@@ -92,20 +92,7 @@
                         <div class="card p-3">
 
                             <div class="card-body border p-0">
-                                <form action="" method=""></form>
-                                <div class="form-group">
-                                    <label for="gender">Chọn phương thức thanh toán</label>
-                                    <div>
-                                        <input type="radio" id="male" name="gender" value="nam" required>
-                                        <label for="male">Vnpay</label>
-                                    </div>
-                                    <div>
-                                        <input type="radio" id="female" name="gender" value="nữ" required>
-                                        <label for="female">Tiền mặt</label>
-                                    </div>
-                                    <!-- You can add more options (non-binary, etc.) if needed -->
-                                </div>
-
+                             
                                 <div class="collapse show p-3 pt-0" id="collapseExample">
                                     <div class="row">
 
@@ -129,6 +116,15 @@
                         <div class="btn heading_container heading_center ">
                             <br><br/>
                             <form action="checkoutcontroller" method="post">
+                                <label for="gender">Chọn phương thức thanh toán</label>
+                                <div>
+                                    <input type="radio" id="male" name="payment" value="Vnpay" required>
+                                    <label for="male">Vnpay</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="female" name="payment" value="Tiền mặt" required>
+                                    <label for="female">Tiền mặt</label>
+                                </div>
                                 <input type="submit" class="btn btn-dark" onclick="" value="Thanh toán"/>
                             </form>
                         </div>

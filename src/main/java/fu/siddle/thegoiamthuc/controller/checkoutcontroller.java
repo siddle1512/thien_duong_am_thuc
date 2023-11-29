@@ -52,7 +52,11 @@ public class checkoutcontroller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
         HttpSession session = request.getSession();
+
+        String payment = request.getParameter("payment");
 
         List<User> lisU = (List<User>) session.getAttribute("listuserlogin");
 
@@ -73,7 +77,7 @@ public class checkoutcontroller extends HttpServlet {
             total += (t.getPrice() * t.getQuantity());
         }
 
-        OrderDAO.getInstance().insert(new Order(lisU.get(0).getId(), total, "payment", "processing"));
+        OrderDAO.getInstance().insert(new Order(lisU.get(0).getId(), total, payment, "processing"));
 
         //luu order_data
         //1 item = 1 order_data
@@ -87,11 +91,6 @@ public class checkoutcontroller extends HttpServlet {
 
         response.sendRedirect("./menucontroller");
 
-//        //luu order_data vao db
-//        //remove all items in cart
-//        for (Item t : listI) {
-//            listI.remove(o);
-//        }
     }
 
 }

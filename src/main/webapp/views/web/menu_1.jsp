@@ -88,15 +88,15 @@
                 </div>
 
                 <ul class="filters_menu">
-                    <li class="active" >
-                        <a href="./menucontroller" class="white-text">All</a>
+                    <li  >
+                        <a href="./menucontroller" class="pagination-link active">All</a>
                     </li>
 
                     <c:set var="c" value="${sessionScope.listcate}"/>
                     <c:forEach items="${c}" var="i">
 
                         <li>
-                            <a href="./categorycontroller?id=${i.id}" class="black-text ">${i.name}</a>
+                            <a href="./categorycontroller?id=${i.id}" class="cate">${i.name}</a>
                         </li>
 
                     </c:forEach>

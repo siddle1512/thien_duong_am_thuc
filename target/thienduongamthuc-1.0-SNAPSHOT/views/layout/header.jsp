@@ -172,9 +172,19 @@
                                     </div>
                                     <div class="modal-footer border-top-0 d-flex justify-content-between">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
-                                        <a class="btn btn-success" href="./checkoutcontroller">
-                                            Đi đên thanh toán
-                                        </a>
+                                        <c:choose>
+                                            <c:when test="${s == 0}">
+                                                <a class="btn btn-success" href="">
+                                                    Đi đên thanh toán
+                                                </a>
+                                            </c:when>
+
+                                            <c:otherwise>
+                                                <a class="btn btn-success" href="./checkoutcontroller">
+                                                    Đi đên thanh toán
+                                                </a>
+                                            </c:otherwise>
+                                        </c:choose>
                                         <!--
                                         <button type="button" class="btn btn-success">Đi đên thanh toán</button>
                                         -->

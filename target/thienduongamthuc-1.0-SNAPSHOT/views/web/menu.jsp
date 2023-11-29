@@ -235,9 +235,22 @@
                                             </div>
                                             <div class="modal-footer border-top-0 d-flex justify-content-between">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
-                                                <a class="btn btn-success" href="./checkoutcontroller">
-                                                    Đi đên thanh toán
-                                                </a>
+
+                                                <c:choose>
+                                                    <c:when test="${s == 0}">
+                                                        <a class="btn btn-success" href="">
+                                                            Đi đên thanh toán
+                                                        </a>
+                                                    </c:when>
+
+                                                    <c:otherwise>
+                                                        <a class="btn btn-success" href="./checkoutcontroller">
+                                                            Đi đên thanh toán
+                                                        </a>
+                                                    </c:otherwise>
+                                                </c:choose>
+
+
                                                 <!--
                                                 <button type="button" class="btn btn-success">Đi đên thanh toán</button>
                                                 -->
@@ -279,15 +292,15 @@
                 </div>
 
                 <ul class="filters_menu">
-                    <li class="active" >
-                        <a href="./menucontroller" class="white-text">All</a>
+                    <li  >
+                        <a href="./menucontroller" class="pagination-link active">All</a>
                     </li>
 
                     <c:set var="c" value="${sessionScope.listcate}"/>
                     <c:forEach items="${c}" var="i">
 
                         <li>
-                            <a href="./categorycontroller?id=${i.id}" class="black-text ">${i.name}</a>
+                            <a href="./categorycontroller?id=${i.id}" class="cate">${i.name}</a>
                         </li>
 
                     </c:forEach>
@@ -351,7 +364,7 @@
         <div class="heading_container heading_center">
             <div class="pagination">
                 <div class="pagination-links">
-                    
+
                     <!--handle paging-->
                     <c:set var="currentPage" value="${requestScope.active == null? '1' : requestScope.active}" />
                     <c:set var="totalPages" value="${sessionScope.endPage}" />

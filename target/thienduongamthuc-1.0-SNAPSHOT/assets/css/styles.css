@@ -1,4 +1,12 @@
 /* CSS styles */
+.cate {
+    color: #000000;
+    text-decoration: none;
+    padding: 5px 16px;
+    margin: 0 -16px;
+    border-radius: 5px;
+}
+
 .user-avatar {
     width: 45px;
     height: 45px;
