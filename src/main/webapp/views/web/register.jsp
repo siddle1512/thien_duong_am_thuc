@@ -27,7 +27,7 @@
         <meta name="author" content="" />
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon.png" type="">
 
-        <title> Register - Page </title>
+        <title> Đăng ký - TDAT </title>
 
         <!-- bootstrap core css -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
@@ -41,15 +41,21 @@
 
         <!-- Custom styles for this template -->
         <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/styles.css">
         <!-- responsive style -->
         <link href="${pageContext.request.contextPath}/assets/css/responsive.css" rel="stylesheet" />
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css"/>
     </head>
 
     <body class="sub_page">
+
         <div class="hero_area">
             <%@include file="../layout/header.jsp"%>
         </div>
         <br><br/>
+        
         <section class="register_section layout_padding-bottom">
             <div class="register_container">
                 <div class="container">
@@ -116,8 +122,7 @@
                 </div>
             </div>
         </section>
-
-        <%@include file="/views/layout/footer.jsp" %>
+        <!-- end about section -->
 
         <!-- Add jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -210,6 +215,8 @@
             }
         </style>       
 
+
+        <%@include file="/views/layout/footer.jsp" %>       
 
         <!-- jQery -->
         <script src="${pageContext.request.contextPath}/assets/js/jquery-3.4.1.min.js"></script>

@@ -56,6 +56,9 @@
 
         <!-- responsive style -->
         <link href="${pageContext.request.contextPath}/assets/css/responsive.css" rel="stylesheet" />
+        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css"/>
     </head>
 
     <body class="sub_page">

@@ -22,4 +22,6 @@ public interface DAO<T> {
 
     public List<T> getFid(String id);
 
+    public List<T> getLast();
+
 }

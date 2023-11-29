@@ -1,9 +1,11 @@
+fu\siddle\thegoiamthuc\controller\checkoutcontroller.class
 fu\siddle\thegoiamthuc\model\Order.class
 fu\siddle\thegoiamthuc\model\Admin.class
 fu\siddle\thegoiamthuc\controller\categorycontroller.class
 fu\siddle\thegoiamthuc\controller\registercontroller.class
 fu\siddle\thegoiamthuc\controller\menucontroller.class
 fu\siddle\thegoiamthuc\controller\detailcontroller.class
+fu\siddle\thegoiamthuc\model\dao\Order_dataDAO.class
 fu\siddle\thegoiamthuc\model\dao\DAO.class
 fu\siddle\thegoiamthuc\controller\endpagecontroller.class
 fu\siddle\thegoiamthuc\service\JDBC.class
@@ -12,6 +14,7 @@ fu\siddle\thegoiamthuc\service\Hash.class
 fu\siddle\thegoiamthuc\controller\logoutcontroller.class
 fu\siddle\thegoiamthuc\model\User.class
 fu\siddle\thegoiamthuc\controller\logincontroller.class
+fu\siddle\thegoiamthuc\model\dao\OrderDAO.class
 fu\siddle\thegoiamthuc\controller\processcontroller.class
 fu\siddle\thegoiamthuc\model\dao\AdminDAO.class
 fu\siddle\thegoiamthuc\controller\searchcontroller.class

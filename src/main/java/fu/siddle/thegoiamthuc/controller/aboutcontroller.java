@@ -1,7 +1,10 @@
 package fu.siddle.thegoiamthuc.controller;
 
+import fu.siddle.thegoiamthuc.model.Order;
+import fu.siddle.thegoiamthuc.model.dao.OrderDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +18,7 @@ public class aboutcontroller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         RequestDispatcher rd = request.getRequestDispatcher("views/web/about.jsp");
         rd.forward(request, response);
     }

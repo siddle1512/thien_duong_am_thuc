@@ -44,6 +44,9 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/styles.css">
         <!-- responsive style -->
         <link href="${pageContext.request.contextPath}/assets/css/responsive.css" rel="stylesheet" />
+        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css"/>
     </head>
 
     <body class="sub_page">
@@ -82,7 +85,7 @@
         </section>
         <!-- end about section -->
 
-        <%@include file="/views/layout/footer.jsp" %>
+        <%@include file="/views/layout/footer.jsp" %>       
 
         <!-- jQery -->
         <script src="${pageContext.request.contextPath}/assets/js/jquery-3.4.1.min.js"></script>

@@ -62,6 +62,9 @@
         </div>
 
     </div>
-
+    <!-- BACK TO TOP BUTTON -->
+    <a href="#" class="back-to-top">
+        <span class="material-icons">arrow_upward</span>
+    </a>
 </footer>
 <!-- footer section -->

@@ -4,13 +4,14 @@ import java.util.Objects;
 
 public class User {
 
-    String username;
-    String birth_year;
-    String gender;
-    String email;
-    String hashed_password;
-    String avatar_path;
-    String adress;
+    private int id;
+    private String username;
+    private String birth_year;
+    private String gender;
+    private String email;
+    private String hashed_password;
+    private String avatar_path;
+    private String adress;
 
     public User() {
     }
@@ -19,6 +20,19 @@ public class User {
         this.email = email;
         this.hashed_password = hashed_password;
     }
+
+    public User(int id, String username, String birth_year, String gender, String email, String hashed_password, String avatar_path, String adress) {
+        this.id = id;
+        this.username = username;
+        this.birth_year = birth_year;
+        this.gender = gender;
+        this.email = email;
+        this.hashed_password = hashed_password;
+        this.avatar_path = avatar_path;
+        this.adress = adress;
+    }
+    
+    
 
     public User(String username, String birth_year, String gender, String email, String hashed_password, String avatar_path, String adress) {
         this.username = username;
@@ -84,6 +98,14 @@ public class User {
 
     public void setAdress(String adress) {
         this.adress = adress;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

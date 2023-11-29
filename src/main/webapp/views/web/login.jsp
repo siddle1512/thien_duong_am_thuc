@@ -45,13 +45,16 @@
 
         <!-- Custom styles for this template -->
         <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/styles.css">
         <!-- responsive style -->
         <link href="${pageContext.request.contextPath}/assets/css/responsive.css" rel="stylesheet" />
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css"/>
     </head>
 
     <body class="sub_page">
-        <div class="hero_area">
-        </div>
+
         <div class="hero_area">
             <%@include file="../layout/header.jsp"%>
         </div>
@@ -92,9 +95,7 @@
                 </div>
             </div>
         </section>
-        <div class="hero_area">
-        </div>
-        <%@include file="/views/layout/footer.jsp" %>
+
 
         <!-- Add jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -186,6 +187,8 @@
                 color: #0056b3;
             }
         </style>       
+
+        <%@include file="/views/layout/footer.jsp" %>
 
         <!-- jQery -->
         <script src="${pageContext.request.contextPath}/assets/js/jquery-3.4.1.min.js"></script>

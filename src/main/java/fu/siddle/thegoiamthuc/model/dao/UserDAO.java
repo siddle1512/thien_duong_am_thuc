@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fu.siddle.thegoiamthuc.model.dao;
 
 import fu.siddle.thegoiamthuc.model.Admin;
@@ -14,10 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author tranh
- */
 public class UserDAO implements DAO<User> {
 
     private static final UserDAO instance = new UserDAO();
@@ -38,6 +30,7 @@ public class UserDAO implements DAO<User> {
             ResultSet rs = smt.executeQuery();
 
             while (rs.next()) {
+                int id = rs.getInt("id");
                 String username = rs.getString("username");
                 String birth_year = rs.getString("birth_year");
                 String gender = rs.getString("gender");
@@ -46,7 +39,7 @@ public class UserDAO implements DAO<User> {
                 String avatar_path = rs.getString("avatar_path");
                 String adress = rs.getString("adress");
 
-                list.add(new User(username, birth_year, gender, email, hashed_password, avatar_path, adress));
+                list.add(new User(id, username, birth_year, gender, email, hashed_password, avatar_path, adress));
             }
 
             JDBC.closeConnection(conn);
@@ -91,6 +84,7 @@ public class UserDAO implements DAO<User> {
             ResultSet rs = smt.executeQuery();
 
             while (rs.next()) {
+                int id = rs.getInt("id");
                 String username = rs.getString("username");
                 String birth_year = rs.getString("birth_year");
                 String gender = rs.getString("gender");
@@ -99,7 +93,7 @@ public class UserDAO implements DAO<User> {
                 String avatar_path = rs.getString("avatar_path");
                 String adress = rs.getString("adress");
 
-                list.add(new User(username, birth_year, gender, email, hashed_password, avatar_path, adress));
+                list.add(new User(id, username, birth_year, gender, email, hashed_password, avatar_path, adress));
             }
 
             JDBC.closeConnection(conn);
@@ -137,6 +131,11 @@ public class UserDAO implements DAO<User> {
 
     @Override
     public List<User> getFid(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<User> getLast() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

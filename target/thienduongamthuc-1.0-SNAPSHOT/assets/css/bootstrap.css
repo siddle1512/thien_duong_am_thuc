@@ -155,7 +155,7 @@ sup {
 a {
     color: #007bff;
     text-decoration: none;
-    background-color: transparent;
+    background-color: #00000008;
 }
 
 a:hover {
@@ -6596,7 +6596,7 @@ button.bg-dark:focus {
 }
 
 .border {
-    border: 1px solid #dee2e6 !important;
+    border: 0px solid #dee2e600 !important;
 }
 
 .border-top {

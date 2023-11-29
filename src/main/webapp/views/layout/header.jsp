@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <div class="hero_area">
     <div class="bg-box">
         <img src="${pageContext.request.contextPath}/assets/images/hero-bg.jpg" alt="">
@@ -171,7 +172,7 @@
                                     </div>
                                     <div class="modal-footer border-top-0 d-flex justify-content-between">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
-                                        <a href="https://scontent.fsgn2-7.fna.fbcdn.net/v/t1.15752-9/405336103_879670187103411_7919669060763491826_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeGjg0gL174ILbEyA8eVev3DvS9vFKXRmNq9L28UpdGY2mS_LcZ8nO68hUky-7e1CqR9XkBRLO3peh6Cbu_vxjI3&_nc_ohc=vB17AMc0VRMAX8Cxh8V&_nc_ht=scontent.fsgn2-7.fna&oh=03_AdSE0hCFlD_5Ae-zDr5wjfNCxkn71G3Im0Kc6cvZo5IMRg&oe=658C61F6">
+                                        <a class="btn btn-success" href="./checkoutcontroller">
                                             Đi đên thanh toán
                                         </a>
                                         <!--
