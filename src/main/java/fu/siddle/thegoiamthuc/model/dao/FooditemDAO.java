@@ -198,6 +198,34 @@ public class FooditemDAO implements DAO<Fooditem> {
         return list;
     }
 
+    public List<Fooditem> getFoodoffsetIdCid(String cid, String id) {
+        List<Fooditem> list = new ArrayList<>();
+
+        int offset = Integer.parseInt(id);
+
+        try (Connection conn = JDBC.getConnection(); PreparedStatement smt = conn.prepareStatement("SELECT * FROM fooditem WHERE category_id = ? ORDER BY id LIMIT ?, 6")) {
+            smt.setString(1, cid);
+            smt.setInt(2, (offset - 1) * 6);
+            ResultSet rs = smt.executeQuery();
+
+            while (rs.next()) {
+                int idf = rs.getInt("id");
+                String name = rs.getString("name");
+                int category_id = rs.getInt("category_id");
+                int price = rs.getInt("price");
+                String image = rs.getString("image");
+
+                list.add(new Fooditem(idf, name, category_id, price, image));
+            }
+            JDBC.closeConnection(conn);
+        } catch (SQLException ex) {
+            // Handle your exception here
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
+
     @Override
     public List<Fooditem> getFid(String id) {
         List<Fooditem> list = new ArrayList<>();

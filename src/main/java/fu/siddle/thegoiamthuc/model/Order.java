@@ -3,16 +3,51 @@ package fu.siddle.thegoiamthuc.model;
 public class Order {
 
     private int id;
+    
+    //hien thi them
+    private String username;
+    
     private int user_id;
     private double total_price;
     private String payment;
     private String status;
+    private String start_date;
 
     public Order() {
     }
 
     public Order(int id) {
         this.id = id;
+    }
+
+    //hien thi them
+    public Order(int id, String username, int user_id, double total_price, String payment, String status, String start_date) {
+        this.id = id;
+        this.username = username;
+        this.user_id = user_id;
+        this.total_price = total_price;
+        this.payment = payment;
+        this.status = status;
+        this.start_date = start_date;
+    }
+    
+    
+
+    public Order(int id, int user_id, double total_price, String payment, String status, String start_date) {
+        this.id = id;
+        this.user_id = user_id;
+        this.total_price = total_price;
+        this.payment = payment;
+        this.status = status;
+        this.start_date = start_date;
+    }
+
+    public Order(int id, int user_id, double total_price, String payment, String status) {
+        this.id = id;
+        this.user_id = user_id;
+        this.total_price = total_price;
+        this.payment = payment;
+        this.status = status;
     }
 
     public Order(int user_id, double total_price, String payment, String status) {
@@ -61,5 +96,23 @@ public class Order {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getStart_date() {
+        return start_date;
+    }
+
+    public void setStart_date(String start_date) {
+        this.start_date = start_date;
+    }
+    
+    
 
 }

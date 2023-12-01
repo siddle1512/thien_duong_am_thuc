@@ -56,7 +56,7 @@
 
         <!-- responsive style -->
         <link href="${pageContext.request.contextPath}/assets/css/responsive.css" rel="stylesheet" />
-        
+
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css"/>
     </head>
@@ -72,20 +72,13 @@
 
                 <div class="heading_container heading_center">
                     <h2>
-                        Các món 
+                        Thể loại các món
                     </h2>
                 </div>
 
                 <br><br/>
 
-                <div class="heading_container heading_center">
-                    <form action="./searchcontroller" method="get" class="search-form">
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="query" value="${keysearch}" required>
-                            <button type="submit" class="btn btn-dark">Tìm kiếm</button>
-                        </div>
-                    </form>
-                </div>
+
 
                 <ul class="filters_menu">
                     <li  >
@@ -156,6 +149,44 @@
             </div>
         </section>
         <!--end food section -->
+
+        <div class="heading_container heading_center">
+            <div class="pagination">
+                <div class="pagination-links">
+
+                    <!--handle paging-->
+                    <c:set var="currentPage" value="${requestScope.active == null? '1' : requestScope.active}" />
+                    <c:set var="totalPages" value="${sessionScope.endPage}" />
+                    <c:set var="pagesToShow" value="${1}" /> 
+
+                    <c:set var="startPage" value="${requestScope.active == null? '1' : requestScope.active}" />
+                    <c:set var="endPage" value="${(currentPage + pagesToShow < totalPages) ? currentPage + pagesToShow : totalPages}" />
+
+                    <c:if test="${currentPage > 1}">
+                        <a href="./endpagecatecontroller?id=${1}" class="pagination-link">«</a>
+                        <a href="./endpagecatecontroller?id=${currentPage - 1}" class="pagination-link">‹</a> 
+                    </c:if>
+
+                    <c:forEach begin="${startPage-1 <= 0? startPage: startPage-1}" end="${endPage}" var="i">
+                        <c:choose>
+                            <c:when test="${i <= totalPages}">
+                                <a href="./endpagecatecontroller?id=${i}" class="pagination-link ${currentPage == i ? 'active' : ''}">${i}</a>
+                            </c:when>
+                        </c:choose>
+                    </c:forEach>
+
+                    <c:if test="${currentPage < totalPages}">
+                        <a href="./endpagecatecontroller?id=${currentPage + 1}" class="pagination-link">›</a>
+                    </c:if>
+
+                    <c:if test="${endPage < totalPages}">
+
+                        <a href="./endpagecatecontroller?id=${totalPages}" class="pagination-link">»</a>
+                    </c:if>
+
+                </div>
+            </div>
+        </div>
 
         <br><br/>
         <br><br/>

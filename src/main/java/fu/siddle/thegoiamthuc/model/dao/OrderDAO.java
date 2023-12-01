@@ -20,7 +20,36 @@ public class OrderDAO implements DAO<Order> {
 
     @Override
     public List<Order> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<Order> list = new ArrayList<>();
+
+        try {
+            Connection conn = JDBC.getConnection();
+
+            PreparedStatement smt = conn.prepareStatement("SELECT * FROM `order` LEFT JOIN `user` ON user.id = order.user_id");
+
+            ResultSet rs = smt.executeQuery();
+
+            while (rs.next()) {
+
+                int id = rs.getInt("id");
+                //hien them
+                String username = rs.getString("username");
+                int user_id = rs.getInt("user_id");
+                
+                double total_price = rs.getDouble("total_price");
+                String payment = rs.getString("payment");
+                String status = rs.getString("status");
+                String start_date = rs.getString("create_at");
+
+                list.add(new Order(id, username, user_id, total_price, payment, status, start_date));
+            }
+
+            JDBC.closeConnection(conn);
+
+        } catch (SQLException ex) {
+        }
+
+        return list;
     }
 
     @Override

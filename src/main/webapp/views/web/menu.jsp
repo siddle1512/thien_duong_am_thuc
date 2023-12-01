@@ -276,7 +276,7 @@
 
                 <div class="heading_container heading_center">
                     <h2>
-                        Các món 
+                        Tất cả các món 
                     </h2>
                 </div>
 

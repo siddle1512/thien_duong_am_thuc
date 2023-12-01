@@ -139,4 +139,36 @@ public class UserDAO implements DAO<User> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public List<User> getByStatus(String e) {
+        List<User> list = new ArrayList<>();
+
+        try {
+            Connection conn = JDBC.getConnection();
+
+            PreparedStatement smt = conn.prepareStatement("SELECT * FROM user WHERE status = ?");
+            smt.setString(1, e);
+
+            ResultSet rs = smt.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String username = rs.getString("username");
+                String birth_year = rs.getString("birth_year");
+                String gender = rs.getString("gender");
+                String email = rs.getString("email");
+                String hashed_password = rs.getString("hashed_password");
+                String avatar_path = rs.getString("avatar_path");
+                String adress = rs.getString("adress");
+
+                list.add(new User(id, username, birth_year, gender, email, hashed_password, avatar_path, adress));
+            }
+
+            JDBC.closeConnection(conn);
+
+        } catch (SQLException ex) {
+        }
+
+        return list;
+    }
+
 }

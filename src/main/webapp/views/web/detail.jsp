@@ -49,7 +49,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/styles.css">
         <!-- responsive style -->
         <link href="${pageContext.request.contextPath}/assets/css/responsive.css" rel="stylesheet" />
-        
+
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css"/>
 
@@ -62,10 +62,8 @@
 
         <!-- Product Details Section Begin -->
         <section class="food_section layout_padding">
-
             <div class="container">
                 <div class="row">
-
                     <div class="col-sm-6 col-lg-4 all pizza">
                         <div class="product__details__pic">
                             <div class="img-box">
@@ -83,29 +81,27 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star-half-o"></i>
                             </div>
-                            <div class="product__details__price"><%=listfdetail.get(0).getPrice()%>₫</div>
+                            <div class="product__details__price">
+                                <%=listfdetail.get(0).getPrice()%>₫
+                            </div>
 
                             <form name="f" action="buycontroller" method="post">
                                 <div class="product__details__quantity">
-                                    <div class="quantity">
-                                        <div class="pro-qty">
-                                            <input type="number" name="num" value="1"/>
-                                        </div>
-                                    </div>
+                                    <input class="pagination-link active" type="number" name="num" value="1"/>
                                 </div>
-                                <%if (ul == null) {%>
-                                <a href="./logincontroller" class="btn btn-dark">Thêm vào giỏ hàng</a>
-                                <%} else {%>                                              
-                                <input type="submit" class="btn btn-dark" onclick="buy(<%=listfdetail.get(0).getId()%>)" value="Thêm vào rỏ hàng"/>
-                                <%}%>
-                            </form>
 
+                                <% if (ul == null) { %>
+                                <a href="./logincontroller" class="btn btn-dark">Thêm vào giỏ hàng</a>
+                                <% } else {%>
+                                <input type="submit" class="btn btn-dark" onclick="buy(<%=listfdetail.get(0).getId()%>)" value="Thêm vào rỏ hàng"/>
+                                <% } %>
+                            </form>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
+
         <!-- Product Details Section End -->
 
         <!-- offer section -->
@@ -186,14 +182,13 @@
         <script src="${pageContext.request.contextPath}/assets/js/custom.js"></script>
 
         <script type="text/javascript">
-                                    function buy(id) {
-                                        document.f.action = "buycontroller?id=" + id;
-                                        document.f.submit()();
-                                    }
+                                function buy(id) {
+                                    document.f.action = "buycontroller?id=" + id;
+                                    document.f.submit()();
+                                }
         </script>
     </body>
 
 </html>
-
 
 

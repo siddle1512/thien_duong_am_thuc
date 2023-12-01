@@ -55,7 +55,7 @@
             <%@include file="../layout/header.jsp"%>
         </div>
         <br><br/>
-        
+
         <section class="register_section layout_padding-bottom">
             <div class="register_container">
                 <div class="container">
@@ -104,6 +104,31 @@
                                             <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="confirmPassword">Nhập lại mật khẩu</label>
+                                        <div class="password-input d-flex align-items-center">
+                                            <input type="password" class="form-control mr-2" id="confirmPassword" name="confirmPassword" required>
+                                            <span toggle="#confirmPassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                        </div>
+                                    </div>
+
+                                    <script>
+                                        // Function to validate password match
+                                        function validatePassword() {
+                                            var password = document.getElementById("password");
+                                            var confirmPassword = document.getElementById("confirmPassword");
+
+                                            if (password.value !== confirmPassword.value) {
+                                                confirmPassword.setCustomValidity("Mật khẩu không khớp");
+                                            } else {
+                                                confirmPassword.setCustomValidity('');
+                                            }
+                                        }
+
+
+                                        document.getElementById("password").addEventListener("input", validatePassword);
+                                        document.getElementById("confirmPassword").addEventListener("input", validatePassword);
+                                    </script>
 
                                     <div class="form-group">
                                         <label for="profilePicture">Ảnh đại diện</label>
@@ -129,17 +154,17 @@
 
         <!-- Add JavaScript for toggling password visibility -->
         <script>
-            $(document).ready(function () {
-                $(".toggle-password").on('click', function () {
-                    var $passwordField = $($(this).attr('toggle'));
+                                        $(document).ready(function () {
+                                            $(".toggle-password").on('click', function () {
+                                                var $passwordField = $($(this).attr('toggle'));
 
-                    if ($passwordField.attr('type') === 'password') {
-                        $passwordField.attr('type', 'text');
-                    } else {
-                        $passwordField.attr('type', 'password');
-                    }
-                });
-            });
+                                                if ($passwordField.attr('type') === 'password') {
+                                                    $passwordField.attr('type', 'text');
+                                                } else {
+                                                    $passwordField.attr('type', 'password');
+                                                }
+                                            });
+                                        });
         </script>
 
         <style>

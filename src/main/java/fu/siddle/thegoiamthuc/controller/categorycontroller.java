@@ -23,10 +23,25 @@ public class categorycontroller extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         String cid = request.getParameter("id");
+        String n = "1";
 
-        List<Fooditem> listF = FooditemDAO.getInstance().getID(cid);
+        //in ra 6 cai dau tien
+        List<Fooditem> listF = FooditemDAO.getInstance().getFoodoffsetIdCid(cid, n);
+        
+        List<Fooditem> listFs = FooditemDAO.getInstance().getID(cid);
 
         HttpSession session = request.getSession();
+
+        //lay endpage counting
+        int countP = listFs.size();
+
+        int endPage = countP / 6;
+        if (countP % 6 != 0) {
+            endPage++;
+        }
+
+        session.setAttribute("endPage", endPage);
+
         session.setAttribute("cid", cid);
         session.setAttribute("listfood", listF);
 

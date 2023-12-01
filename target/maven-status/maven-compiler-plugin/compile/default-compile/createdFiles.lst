@@ -25,6 +25,7 @@ fu\siddle\thegoiamthuc\controller\aboutcontroller.class
 fu\siddle\thegoiamthuc\controller\adindexcontroller.class
 fu\siddle\thegoiamthuc\model\dao\UserDAO.class
 fu\siddle\thegoiamthuc\model\Item.class
+fu\siddle\thegoiamthuc\controller\endpagecatecontroller.class
 fu\siddle\thegoiamthuc\model\Category.class
 fu\siddle\thegoiamthuc\model\Fooditem.class
 fu\siddle\thegoiamthuc\model\Order_data.class
