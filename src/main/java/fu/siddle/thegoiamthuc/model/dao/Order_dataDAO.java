@@ -1,10 +1,13 @@
 package fu.siddle.thegoiamthuc.model.dao;
 
+import fu.siddle.thegoiamthuc.model.Order;
 import fu.siddle.thegoiamthuc.model.Order_data;
 import fu.siddle.thegoiamthuc.service.JDBC;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order_dataDAO implements DAO<Order_data> {
@@ -17,7 +20,36 @@ public class Order_dataDAO implements DAO<Order_data> {
 
     @Override
     public List<Order_data> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<Order_data> list = new ArrayList<>();
+
+        try {
+            Connection conn = JDBC.getConnection();
+
+            PreparedStatement smt = conn.prepareStatement("SELECT * FROM `order_data` LEFT JOIN `user` ON user.id = order.user_id");
+
+            ResultSet rs = smt.executeQuery();
+
+            while (rs.next()) {
+
+                int id = rs.getInt("id");
+                //hien them
+                String username = rs.getString("username");
+                int user_id = rs.getInt("user_id");
+
+                double total_price = rs.getDouble("total_price");
+                String payment = rs.getString("payment");
+                String status = rs.getString("status");
+                String start_date = rs.getString("create_at");
+
+                list.add(new Order_data(user_id, user_id, id));
+            }
+
+            JDBC.closeConnection(conn);
+
+        } catch (SQLException ex) {
+        }
+
+        return list;
     }
 
     @Override
@@ -44,7 +76,31 @@ public class Order_dataDAO implements DAO<Order_data> {
 
     @Override
     public List<Order_data> getID(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<Order_data> list = new ArrayList<>();
+
+        try {
+            Connection conn = JDBC.getConnection();
+
+            PreparedStatement smt = conn.prepareStatement("SELECT * FROM `order_data` LEFT JOIN `fooditem` ON fooditem.id = order_data.footitem_id WHERE order_data.order_id = ?");
+            smt.setString(1, id);
+            ResultSet rs = smt.executeQuery();
+
+            while (rs.next()) {
+
+                String foodname = rs.getString("name");
+                int ido = rs.getInt("order_id");
+                int idf = rs.getInt("footitem_id");
+                int amout = rs.getInt("amout");
+
+                list.add(new Order_data(foodname, idf, amout, amout));
+            }
+
+            JDBC.closeConnection(conn);
+
+        } catch (SQLException ex) {
+        }
+
+        return list;
     }
 
     @Override

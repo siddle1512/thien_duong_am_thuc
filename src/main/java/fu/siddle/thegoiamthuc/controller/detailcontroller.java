@@ -25,11 +25,7 @@ public class detailcontroller extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
 
-        //kiem tra data
         List<Fooditem> listf = FooditemDAO.getInstance().get4new();
-        for (Fooditem f : listf) {
-            System.out.println(f.getName());
-        }
 
         HttpSession session = request.getSession();
         session.setAttribute("listf", listf);
@@ -38,13 +34,11 @@ public class detailcontroller extends HttpServlet {
         List<Fooditem> listdetailf = FooditemDAO.getInstance().getFid(id);
         session.setAttribute("listdetailf", listdetailf);
 
-        //--phan ro hang--
         List<Fooditem> listfall = FooditemDAO.getInstance().getAll();
 
         Cookie[] arr = request.getCookies();
         String txt = "";
 
-        //check cart 
         if (arr != null) {
             for (Cookie o : arr) {
                 if (o.getName().equals("cart")) {
@@ -57,7 +51,6 @@ public class detailcontroller extends HttpServlet {
 
         List<Item> listItem = cart.getItems();
 
-        //count items in cart
         int n;
         if (listItem != null) {
             n = listItem.size();

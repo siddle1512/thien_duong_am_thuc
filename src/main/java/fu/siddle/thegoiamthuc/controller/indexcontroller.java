@@ -24,18 +24,13 @@ public class indexcontroller extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
 
-        //all fooditem
         String id = "1";
         List<Fooditem> listF = FooditemDAO.getInstance().getFoodoffset(id);
         HttpSession session = request.getSession();
 
         session.setAttribute("listfood", listF);
-
-        //kiem tra data
+  
         List<Fooditem> listf = FooditemDAO.getInstance().get4new();
-        for (Fooditem f : listf) {
-            System.out.println(f.getName());
-        }
 
         session.setAttribute("listf", listf);
 

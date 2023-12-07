@@ -21,6 +21,11 @@ public class logincontroller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+
+        String a = "login";
+        session.setAttribute("active", a);
+
         RequestDispatcher rd = request.getRequestDispatcher("/views/web/login.jsp");
         rd.forward(request, response);
     }
@@ -36,7 +41,6 @@ public class logincontroller extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        //hash password
         String hashed_password = Hash.SHA256(password);
 
         boolean isValidUser = checkUserLogin(email, hashed_password);
@@ -44,7 +48,11 @@ public class logincontroller extends HttpServlet {
 
         if (isValidUser) {
             List<User> listuserlogin = UserDAO.getInstance().get(email);
+            User u = listuserlogin.get(0);
+
+            session.setAttribute("email", email);
             session.setAttribute("listuserlogin", listuserlogin);
+            session.setAttribute("user", u);
 
             response.sendRedirect("./indexcontroller");
         } else if (isValidAdmin) {
@@ -60,7 +68,6 @@ public class logincontroller extends HttpServlet {
     private boolean checkUserLogin(String email, String password) {
         User usr = new User(email, password);
 
-        //lay data
         List<User> list = UserDAO.getInstance().getAll();
 
         for (User u : list) {
@@ -75,7 +82,6 @@ public class logincontroller extends HttpServlet {
     private boolean checkAdminLogin(String email, String password) {
         Admin ad = new Admin(email, password);
 
-        //lay data
         List<Admin> list = AdminDAO.getInstance().getAll();
 
         for (Admin a : list) {

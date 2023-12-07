@@ -112,7 +112,6 @@
                                     </div>
                                 </c:forEach>
 
-
                             </div>
                         </div>
 
@@ -167,7 +166,7 @@
                                         <td><b>${i.total_price}</b></td>
                                         <td><b>${i.payment}</b></td>
                                         <td><b>${i.start_date}</b></td>
-                                        <td><b>${i.status == "processing"? 'Đang xử lý' : i.status}</b></td>
+                                        <td><b>${i.status == "done"? 'Đã thanh toán' : i.status}</b></td>
                                     </tr>
 
                                 </c:forEach>

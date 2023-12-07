@@ -22,29 +22,29 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav  mx-auto ">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="./indexcontroller">Trang chủ </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./menucontroller">Thực đơn</a>
+                        <li class="nav-item ${sessionScope.active == 'menu' ? 'active' : ' '}">
+                            <a class="nav-link " href="./menucontroller">Thực đơn</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ${sessionScope.active == 'about' ? 'active' : ' '}">
                             <a class="nav-link" href="./aboutcontroller">Thông tin</a>
                         </li>
 
                         <%if (imagepath == null) {%>
-                        <li class="nav-item">
+                        <li class="nav-item ${sessionScope.active == 'register' ? 'active' : ' '}">
                             <a class="nav-link" href="./registercontroller">Đăng kí</a>
                         </li>
 
-                        <li class="nav-item">
+                        <li class="nav-item ${sessionScope.active == 'login' ? 'active' : ' '}">
                             <a class="nav-link" href="./logincontroller">Đăng nhập</a>
                         </li>
                         <%} else {%>             
                         <!-- User -->
                         <div class="user_option">
 
-                            <a href="">
+                            <a href="./profilecontroller">
                                 <div class="user-avatar">
                                     <!-- Replace 'avatar_image_url' with the actual URL of the user's avatar -->
                                     <img src="${pageContext.request.contextPath}/assets/images/<%=imagepath%>" alt="User Avatar" class="avatar-img">
@@ -184,10 +184,7 @@
                                                     Đi đên thanh toán
                                                 </a>
                                             </c:otherwise>
-                                        </c:choose>
-                                        <!--
-                                        <button type="button" class="btn btn-success">Đi đên thanh toán</button>
-                                        -->
+                                        </c:choose>   
 
                                     </div>
                                 </div>

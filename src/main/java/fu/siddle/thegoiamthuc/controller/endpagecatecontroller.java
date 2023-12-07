@@ -28,10 +28,6 @@ public class endpagecatecontroller extends HttpServlet {
 
         List<Fooditem> listF = FooditemDAO.getInstance().getFoodoffsetIdCid(cid, n);
 
-        for (Fooditem f : listF) {
-            System.out.println(f.getName());
-        }
-
         session.setAttribute("cid", cid);
         session.setAttribute("listfood", listF);
 

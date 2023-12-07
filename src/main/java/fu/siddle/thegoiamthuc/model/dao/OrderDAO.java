@@ -35,7 +35,7 @@ public class OrderDAO implements DAO<Order> {
                 //hien them
                 String username = rs.getString("username");
                 int user_id = rs.getInt("user_id");
-                
+
                 double total_price = rs.getDouble("total_price");
                 String payment = rs.getString("payment");
                 String status = rs.getString("status");
@@ -127,6 +127,40 @@ public class OrderDAO implements DAO<Order> {
         } catch (SQLException ex) {
             // Handle the exception, for instance, print the error message or stack trace
             ex.printStackTrace();
+        }
+
+        return list;
+    }
+
+    public List<Order> getById(String idu) {
+        List<Order> list = new ArrayList<>();
+
+        try {
+            Connection conn = JDBC.getConnection();
+
+            PreparedStatement smt = conn.prepareStatement("SELECT * FROM `order` LEFT JOIN `user` ON user.id = order.user_id WHERE order.user_id = ? ORDER BY order.id DESC");
+            smt.setString(1, idu);
+
+            ResultSet rs = smt.executeQuery();
+
+            while (rs.next()) {
+
+                int id = rs.getInt("id");
+                //hien them
+                String username = rs.getString("username");
+                int user_id = rs.getInt("user_id");
+
+                double total_price = rs.getDouble("total_price");
+                String payment = rs.getString("payment");
+                String status = rs.getString("status");
+                String start_date = rs.getString("create_at");
+
+                list.add(new Order(id, username, user_id, total_price, payment, status, start_date));
+            }
+
+            JDBC.closeConnection(conn);
+
+        } catch (SQLException ex) {
         }
 
         return list;

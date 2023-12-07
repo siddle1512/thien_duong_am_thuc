@@ -23,7 +23,8 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "menucontroller", urlPatterns = {"/menucontroller"})
 public class menucontroller extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
@@ -35,10 +36,12 @@ public class menucontroller extends HttpServlet {
 
         session.setAttribute("listfood", listF);
 
+        String a = "menu";
+        session.setAttribute("active", a);
+
         List<Category> listC = CategoryDAO.getInstance().getAll();
         session.setAttribute("listcate", listC);
 
-        //lay endpage counting
         int countP = FooditemDAO.getInstance().getCountfood();
 
         int endPage = countP / 6;
@@ -50,20 +53,12 @@ public class menucontroller extends HttpServlet {
 
         RequestDispatcher rd = request.getRequestDispatcher("views/web/menu.jsp");
         rd.forward(request, response);
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html; charset=UTF-8");
 
     }
 

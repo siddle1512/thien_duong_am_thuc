@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -14,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 @MultipartConfig
@@ -23,6 +26,12 @@ public class registercontroller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        HttpSession session = request.getSession();
+
+        String a = "register";
+        session.setAttribute("active", a);
+
         RequestDispatcher rd = request.getRequestDispatcher("views/web/register.jsp");
         rd.forward(request, response);
     }
@@ -37,14 +46,16 @@ public class registercontroller extends HttpServlet {
         String birth_year = request.getParameter("birth_year");
         String gender = request.getParameter("gender");
         String adress = request.getParameter("adress");
+
+        List<String> address = new ArrayList<>();;
+        address.add(adress);
+
         String email = request.getParameter("email");
 
-        // hash passowrd
         String password = request.getParameter("password");
 
         String hashed_password = Hash.SHA256(password);
 
-        //phan hinh anh
         Part file = request.getPart("profilePicture");
         String imageFileName = file.getSubmittedFileName();
 
@@ -52,7 +63,6 @@ public class registercontroller extends HttpServlet {
 
         System.out.println("Upload Path : " + uploadPath);
 
-        /// Uploading our selected image into the images folder
         try {
 
             FileOutputStream fos = new FileOutputStream(uploadPath);
@@ -67,11 +77,11 @@ public class registercontroller extends HttpServlet {
             e.printStackTrace();
         }
 
-        //add vao model
-        User u = new User(username, birth_year, gender, email, hashed_password, imageFileName, adress);
-        //insert database
+        User u = new User(username, birth_year, gender, email, hashed_password, imageFileName, address);
+
         UserDAO.getInstance().insert(u);
-        response.sendRedirect("./indexcontroller");
+        
+        response.sendRedirect("./logincontroller");
     }
 
 }

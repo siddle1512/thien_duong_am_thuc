@@ -33,14 +33,12 @@ public class buycontroller extends HttpServlet {
         String num_request = request.getParameter("num");
         String id_request = request.getParameter("id");
 
-        //System.out.println(num + id);
         HttpSession session = request.getSession();
 
         Cart cart = null;
 
         Object o = session.getAttribute("cart");
 
-        //co r
         if (o != null) {
             cart = (Cart) o;
         } else {
@@ -51,7 +49,6 @@ public class buycontroller extends HttpServlet {
         try {
             num = Integer.parseInt(num_request);
             id = Integer.parseInt(id_request);
-            //handle input
 
             if (num < 0) {
                 num = 1;

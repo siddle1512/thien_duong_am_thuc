@@ -64,6 +64,7 @@
             <div class="bg-box">
                 <img src="${pageContext.request.contextPath}/assets/images/hero-bg.jpg" alt="">
             </div>
+
             <!-- header section strats -->
             <header class="header_section">
                 <div class="container">
@@ -102,7 +103,7 @@
                             <!-- User -->
                             <div class="user_option">
 
-                                <a href="">
+                                <a href="./profilecontroller">
                                     <div class="user-avatar">
                                         <!-- Replace 'avatar_image_url' with the actual URL of the user's avatar -->
                                         <img src="${pageContext.request.contextPath}/assets/images/<%=imagepath%>" alt="User Avatar" class="avatar-img">

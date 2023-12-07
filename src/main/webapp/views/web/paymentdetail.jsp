@@ -64,25 +64,6 @@
             <form action="" method="post">
                 <div class="row">
 
-                    <div class="col-lg-4 mb-lg-0 mb-3">
-                        <div class="card p-3">
-                            <div class="img-box">
-                                <img src="https://www.freepnglogos.com/uploads/visa-logo-download-png-21.png" alt="">
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 mb-lg-0 mb-3">
-                        <div class="card p-3">
-                            <div class="img-box">
-                                <img src="https://www.freepnglogos.com/uploads/mastercard-png/file-mastercard-logo-svg-wikimedia-commons-4.png"
-                                     alt="">
-                            </div>
-
-                        </div>
-                    </div>
-
                     <div class="col-12 mt-4">
                         <div class="card p-3">
                             <p class="mb-0 fw-bold h4">Đơn thanh toán của bạn</p>
@@ -92,9 +73,39 @@
                         <div class="card p-3">
 
                             <div class="card-body border p-0">
-                             
+
                                 <div class="collapse show p-3 pt-0" id="collapseExample">
                                     <div class="row">
+
+
+                                        <table class="table table-image">
+                                            <thead>
+                                                <tr>                    
+                                                    <th scope="col">Món ăn</th>
+                                                    <th scope="col">Giá</th>
+                                                    <th scope="col">Số lượng</th>
+                                                    <th scope="col">Tổng</th>
+
+                                                </tr>
+                                            </thead>
+
+                                            <c:set var="o" value="${sessionScope.cart}"/>
+                                            <c:set var="t" value="0"/>
+
+                                            <c:forEach items="${o.items}" var="i">
+
+                                                <tbody>
+                                                    <tr>
+                                                        <td>${i.fooditem.name}</td>
+                                                        <td>${i.price}₫</td>
+                                                        <td>${i.quantity}</td>
+                                                        <td>${i.price*i.quantity}₫</td>
+
+                                                    </tr>
+                                                </tbody>
+
+                                            </c:forEach>
+                                        </table>                               
 
                                         <div class="col-lg-5 mb-lg-0 mb-3">
                                             <p class="h4 mb-0">Tổng kết</p>
@@ -113,21 +124,30 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <div class="btn heading_container heading_center ">
-                            <br><br/>
-                            <form action="checkoutcontroller" method="post">
-                                <label for="gender">Chọn phương thức thanh toán</label>
-                                <div>
-                                    <input type="radio" id="male" name="payment" value="Vnpay" required>
-                                    <label for="male">Vnpay</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="female" name="payment" value="Tiền mặt" required>
-                                    <label for="female">Tiền mặt</label>
-                                </div>
-                                <input type="submit" class="btn btn-dark" onclick="" value="Thanh toán"/>
-                            </form>
-                        </div>
+
+                        <br><br/>
+                        <form action="checkoutcontroller" method="post">
+                            <c:set var="u" value="${sessionScope.user}" />
+                            <div class="form-group">
+                                <label for="loaiSanPham">Chọn địa chỉ giao hàng</label>
+                                <select class="form-control" id="loaiSanPham">
+                                    <c:forEach items="${u.adress}" var="i">
+                                        <option value="loai1">${i}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="loaiSanPham">Chọn phương thức thanh toán</label>
+                                <select class="form-control" id="loaiSanPham" name="payment">                                  
+                                    <option value="Vnpay">Vnpay</option>  
+                                    <option value="Tiền mặt">Tiền mặt</option> 
+                                </select>
+                            </div>
+
+                            <input type="submit" class="btn btn-dark" onclick="" value="Thanh toán"/>
+                        </form>
+
                     </div>
 
                 </div>

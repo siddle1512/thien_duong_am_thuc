@@ -74,13 +74,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="product__details__text">
                             <h3><%=listfdetail.get(0).getName()%></h3>
-                            <div class="product__details__rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-o"></i>
-                            </div>
+ 
                             <div class="product__details__price">
                                 <%=listfdetail.get(0).getPrice()%>₫
                             </div>

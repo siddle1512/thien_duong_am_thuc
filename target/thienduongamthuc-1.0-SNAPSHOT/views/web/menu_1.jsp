@@ -81,16 +81,16 @@
 
 
                 <ul class="filters_menu">
-                    <li  >
-                        <a href="./menucontroller" class="pagination-link active">All</a>
-                    </li>
+                  
+                        <a href="./menucontroller" class="pagination-link">Tất cả</a>
+                   
 
                     <c:set var="c" value="${sessionScope.listcate}"/>
                     <c:forEach items="${c}" var="i">
 
-                        <li>
-                            <a href="./categorycontroller?id=${i.id}" class="cate">${i.name}</a>
-                        </li>
+
+                        <a href="./categorycontroller?id=${i.id}" class="pagination-link ${cid == i.id? 'active' : ''}">${i.name}</a>
+
 
                     </c:forEach>
                 </ul>

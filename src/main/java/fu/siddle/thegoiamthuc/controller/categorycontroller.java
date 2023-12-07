@@ -25,14 +25,12 @@ public class categorycontroller extends HttpServlet {
         String cid = request.getParameter("id");
         String n = "1";
 
-        //in ra 6 cai dau tien
         List<Fooditem> listF = FooditemDAO.getInstance().getFoodoffsetIdCid(cid, n);
-        
+
         List<Fooditem> listFs = FooditemDAO.getInstance().getID(cid);
 
         HttpSession session = request.getSession();
 
-        //lay endpage counting
         int countP = listFs.size();
 
         int endPage = countP / 6;

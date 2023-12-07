@@ -2,6 +2,8 @@ package fu.siddle.thegoiamthuc.model;
 
 public class Order_data {
 
+    private String foodname;
+
     private int order_id;
     private int fooditem_id;
     private int amout;
@@ -10,6 +12,13 @@ public class Order_data {
     }
 
     public Order_data(int order_id, int fooditem_id, int amout) {
+        this.order_id = order_id;
+        this.fooditem_id = fooditem_id;
+        this.amout = amout;
+    }
+
+    public Order_data(String foodname, int order_id, int fooditem_id, int amout) {
+        this.foodname = foodname;
         this.order_id = order_id;
         this.fooditem_id = fooditem_id;
         this.amout = amout;
@@ -37,6 +46,14 @@ public class Order_data {
 
     public void setAmout(int amout) {
         this.amout = amout;
+    }
+
+    public String getFoodname() {
+        return foodname;
+    }
+
+    public void setFoodname(String foodname) {
+        this.foodname = foodname;
     }
 
 }

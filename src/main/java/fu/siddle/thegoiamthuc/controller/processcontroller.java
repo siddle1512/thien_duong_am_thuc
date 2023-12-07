@@ -29,7 +29,6 @@ public class processcontroller extends HttpServlet {
             cart = new Cart();
         }
 
-        
         String fid = request.getParameter("fid");
         int id = Integer.parseInt(fid);
 
