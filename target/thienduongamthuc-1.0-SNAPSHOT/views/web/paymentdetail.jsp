@@ -134,9 +134,15 @@
                                     <c:forEach items="${u.adress}" var="i">
                                         <option value="loai1">${i}</option>
                                     </c:forEach>
-                                </select>
-                            </div>
 
+                                </select>
+
+                            </div>
+                            
+                            <div class="form-group">
+                                <a class="btn btn-dark" href="./profilecontroller">Thêm địa chỉ</a> 
+                            </div>
+                            
                             <div class="form-group">
                                 <label for="loaiSanPham">Chọn phương thức thanh toán</label>
                                 <select class="form-control" id="loaiSanPham" name="payment">                                  

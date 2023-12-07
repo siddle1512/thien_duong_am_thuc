@@ -1,6 +1,7 @@
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\model\Admin.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\controller\registercontroller.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\model\User.java
+D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\controller\deleteaddresscontroller.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\service\JDBC.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\controller\checkoutcontroller.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\model\Order.java
@@ -33,6 +34,7 @@ D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\co
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\controller\resetpasswordcontroller.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\model\Item.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\controller\endpagecatecontroller.java
+D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\controller\updateaddresscontroller.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\controller\detailcontroller.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\controller\categorycontroller.java
 D:\webjava\amthucnew\thien_duong_am_thuc\src\main\java\fu\siddle\thegoiamthuc\model\dao\DAO.java

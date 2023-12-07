@@ -1,7 +1,9 @@
 fu\siddle\thegoiamthuc\controller\checkoutcontroller.class
 fu\siddle\thegoiamthuc\controller\resetpasswordcontroller.class
+fu\siddle\thegoiamthuc\controller\deleteaddresscontroller.class
 fu\siddle\thegoiamthuc\model\Order.class
 fu\siddle\thegoiamthuc\model\Admin.class
+fu\siddle\thegoiamthuc\controller\updateaddresscontroller.class
 fu\siddle\thegoiamthuc\controller\categorycontroller.class
 fu\siddle\thegoiamthuc\controller\registercontroller.class
 fu\siddle\thegoiamthuc\controller\menucontroller.class

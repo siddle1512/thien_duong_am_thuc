@@ -47,7 +47,7 @@ public class paysuccessfulcontroller extends HttpServlet {
             total += (t.getPrice() * t.getQuantity());
         }
 
-        OrderDAO.getInstance().insert(new Order(lisU.get(0).getId(), total, "Vnpay", "done"));
+        OrderDAO.getInstance().insert(new Order(lisU.get(0).getId(), total, "Vnpay", "Đã thanh toán"));
 
         List<Order> lastOrder = OrderDAO.getInstance().getLast();
 

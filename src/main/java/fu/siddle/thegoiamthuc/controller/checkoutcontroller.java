@@ -93,7 +93,7 @@ public class checkoutcontroller extends HttpServlet {
             handleVNPayCheckout(request, response, total);
 
         } else {
-            OrderDAO.getInstance().insert(new Order(lisU.get(0).getId(), total, payment, "done"));
+            OrderDAO.getInstance().insert(new Order(lisU.get(0).getId(), total, payment, "Đang xử lý"));
 
             List<Order> lastOrder = OrderDAO.getInstance().getLast();
 

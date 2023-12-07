@@ -320,6 +320,12 @@
                                         <span class="hidden-xs">Thay đổi mật khẩu</span>
                                     </a>
                                 </li>
+                                <li class>
+                                    <a href="#useraddress" data-toggle="tab" aria-expanded="false">
+                                        <span class="visible-xs"><i class="fa fa-cog"></i></span>
+                                        <span class="hidden-xs">Địa chỉ giao hàng</span>
+                                    </a>
+                                </li>
                             </ul>
                             <div class="tab-content">
 
@@ -333,7 +339,8 @@
                                                     <th scope="col">Tổng tiền</th>
                                                     <th scope="col">Phương thức thanh toán</th>
                                                     <th scope="col">Ngày mua</th>
-                                                    <th scope="col">Chi tiết</th>
+                                                    <th scope="col">Trạng thái</th>
+                                                    <th scope="col">Thao tác</th>
                                                 </tr>
                                             </thead>
 
@@ -344,17 +351,31 @@
                                                         <td>${n = n +1}</td>
                                                         <td>${i.total_price}₫</td>
                                                         <td>${i.payment}</td>
+                                                        <td>${i.status}</td>
                                                         <td>${i.start_date}</td>
 
                                                         <td>
-                                                            <a class="btn btn-danger btn-sm"  href="./userordercontroller?query=${i.id}" >
-                                                                Xem
-                                                            </a>
+                                                            <c:choose>
+                                                                <c:when test="${i.status == 'Đang xử lý'}">
+                                                                    <a class="btn btn-dark btn-sm"  href="./userordercontroller?query=${i.id}" >
+                                                                        Xem
+                                                                    </a>
+                                                                    <a class="btn btn-danger btn-sm"  href="./userordercontroller?query=${i.id}" >
+                                                                        Hủy
+                                                                    </a>
+                                                                </c:when>
+
+                                                                <c:otherwise>
+                                                                    <a class="btn btn-dark btn-sm"  href="./userordercontroller?query=${i.id}" >
+                                                                        Xem
+                                                                    </a>
+                                                                </c:otherwise>
+                                                            </c:choose> 
 
                                                         </td>
                                                     </tr>
                                                 </tbody>
-                                            </c:forEach>
+                                            </c:forEach>                                       
 
                                         </table>                                     
                                     </div>
@@ -438,7 +459,58 @@
 
                                         <button class="btn btn-primary waves-effect waves-light w-md" type="submit">Thay đổi</button>
                                     </form>
+                                </div>
 
+                                <div class="tab-pane" id="useraddress">
+                                    <div class="modal-body">
+                                        <table class="table table-image">
+                                            <thead>
+                                                <tr>     
+                                                    <th scope="col">Stt</th>   
+                                                    <th scope="col">Địa chỉ</th>                                     
+                                                    <th scope="col">Xóa</th>
+                                                </tr>
+                                            </thead>
+
+                                            <c:set var="n" value="0"/>
+                                            <c:forEach items="${u.adress}" var="i">
+                                                <tbody>
+                                                    <tr>                                                             
+                                                        <td>${n = n +1}</td> 
+                                                        <td>${i}</td> 
+                                                        <td>
+                                                            <a class="btn btn-danger btn-sm"  href="./deleteaddresscontroller?query=${n}" >
+                                                                Xóa
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </c:forEach>
+
+                                        </table>                                     
+                                    </div>
+
+                                    <form action="updateaddresscontroller" method="post">
+                                        <div class="form-group">
+                                            <select class="form-control" id="city" name="city">
+                                                <option value="" selected>Chọn tỉnh thành</option>           
+                                            </select>
+
+                                            <select class="form-control" id="district" name="district">
+                                                <option value="" selected>Chọn quận huyện</option>
+                                            </select>
+
+                                            <select class="form-control" id="ward" name="ward">
+                                                <option value="" selected>Chọn phường xã</option>
+                                            </select>
+                                        </div>  
+
+                                        <div class="form-group">
+                                            <label for="Password">Thêm địa chỉ cụ thể</label>
+                                            <input type="text" placeholder="Nhập địa chỉ" id="" name="address" class="form-control">
+                                        </div>
+                                        <button class="btn btn-primary waves-effect waves-light w-md" type="submit">Thêm</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -478,3 +550,58 @@
     </body>
 
 </html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+                                            var citis = document.getElementById("city");
+                                            var districts = document.getElementById("district");
+                                            var wards = document.getElementById("ward");
+                                            var Parameter = {
+                                                url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+                                                method: "GET",
+                                                responseType: "application/json",
+                                            };
+                                            var promise = axios(Parameter);
+                                            promise.then(function (result) {
+                                                renderCity(result.data);
+                                            });
+
+                                            function renderCity(data) {
+                                                for (const x of data) {
+                                                    var opt = document.createElement('option');
+                                                    opt.value = x.Name;
+                                                    opt.text = x.Name;
+                                                    opt.setAttribute('data-id', x.Id);
+                                                    citis.options.add(opt);
+                                                }
+                                                citis.onchange = function () {
+                                                    district.length = 1;
+                                                    ward.length = 1;
+                                                    if (this.options[this.selectedIndex].dataset.id != "") {
+                                                        const result = data.filter(n => n.Id === this.options[this.selectedIndex].dataset.id);
+
+                                                        for (const k of result[0].Districts) {
+                                                            var opt = document.createElement('option');
+                                                            opt.value = k.Name;
+                                                            opt.text = k.Name;
+                                                            opt.setAttribute('data-id', k.Id);
+                                                            district.options.add(opt);
+                                                        }
+                                                    }
+                                                };
+                                                district.onchange = function () {
+                                                    ward.length = 1;
+                                                    const dataCity = data.filter((n) => n.Id === citis.options[citis.selectedIndex].dataset.id);
+                                                    if (this.options[this.selectedIndex].dataset.id != "") {
+                                                        const dataWards = dataCity[0].Districts.filter(n => n.Id === this.options[this.selectedIndex].dataset.id)[0].Wards;
+
+                                                        for (const w of dataWards) {
+                                                            var opt = document.createElement('option');
+                                                            opt.value = w.Name;
+                                                            opt.text = w.Name;
+                                                            opt.setAttribute('data-id', w.Id);
+                                                            wards.options.add(opt);
+                                                        }
+                                                    }
+                                                };
+                                            }
+</script>
