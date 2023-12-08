@@ -32,6 +32,9 @@ public class adindexcontroller extends HttpServlet {
 
         List<User> listUst = UserDAO.getInstance().getByStatus("activate");
 
+        String a = "index";
+
+        session.setAttribute("activead", a);
         session.setAttribute("listO", listO);
         session.setAttribute("listU", listU);
         session.setAttribute("listUst", listUst);
@@ -44,11 +47,6 @@ public class adindexcontroller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html; charset=UTF-8");
-
-        RequestDispatcher rd = request.getRequestDispatcher("/views/dashboard/adindex.jsp");
-        rd.forward(request, response);
 
     }
 

@@ -261,4 +261,57 @@ public class FooditemDAO implements DAO<Fooditem> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public void insertFooditem(Fooditem obj) {
+        try {
+            Connection conn = JDBC.getConnection();
+
+            PreparedStatement smt = conn.prepareStatement("INSERT INTO fooditem(name, category_id, price, image) VALUES (?, ?, ?, ?)");
+            smt.setString(1, obj.getName());
+            smt.setInt(2, obj.getCategory_id());
+            smt.setInt(3, obj.getPrice());
+            smt.setString(4, obj.getImage());
+
+            smt.executeUpdate();
+            JDBC.closeConnection(conn);
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+    }
+
+    public void remove(String id) {
+        try {
+            Connection conn = JDBC.getConnection();
+
+            PreparedStatement smt = conn.prepareStatement("DELETE FROM fooditem WHERE id = ?");
+            smt.setString(1, id);
+
+            smt.executeUpdate();
+            JDBC.closeConnection(conn);
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+    }
+
+    public void update(Fooditem obj) {
+
+        try {
+            Connection conn = JDBC.getConnection();
+
+            PreparedStatement smt = conn.prepareStatement("UPDATE fooditem SET name = ?, category_id = ?, price = ?, image = ? WHERE id = ?");
+
+            smt.setString(1, obj.getName());
+            smt.setInt(2, obj.getCategory_id());
+            smt.setInt(3, obj.getPrice());
+            smt.setString(4, obj.getImage());
+            smt.setInt(5, obj.getId());
+
+            smt.executeUpdate();
+            JDBC.closeConnection(conn);
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
+
 }

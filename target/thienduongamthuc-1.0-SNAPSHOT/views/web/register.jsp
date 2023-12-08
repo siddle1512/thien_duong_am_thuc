@@ -69,10 +69,35 @@
                                         <input type="text" class="form-control" id="username" name="username" required>
                                     </div>
 
+                             
+
                                     <div class="form-group">
-                                        <label for="email">Năm sinh</label>
-                                        <input type="number" class="form-control" id="email" name="birth_year" required>
+                                        <label for="quantityInput">Năm sinh</label>
+                                        <input id="quantityInput" class="form-control" type="number" name="birth_year" value="200" min="1512" max="2011" required/>
                                     </div>
+
+                                    <script>
+                                        // JavaScript code
+                                        document.addEventListener('DOMContentLoaded', function () {
+                                            // Get the input element
+                                            const quantityInput = document.getElementById('quantityInput');
+
+                                            // Add event listener for input change
+                                            quantityInput.addEventListener('change', function () {
+                                                // Get the value entered by the user
+                                                let enteredValue = parseInt(this.value);
+
+                                                // Check if the entered value is less than 1 or greater than 100
+                                                if (enteredValue < 1512 || isNaN(enteredValue)) {
+                                                    // If the value is less than 1 or not a number, set it to 1
+                                                    this.value = 1512;
+                                                } else if (enteredValue > 2011) {
+                                                    // If the value is greater than 100, set it to 100
+                                                    this.value = 2011;
+                                                }
+                                            });
+                                        });
+                                    </script>
 
                                     <div class="form-group">
                                         <label for="gender">Giới tính</label>
@@ -123,7 +148,7 @@
                                         document.getElementById("confirmPassword").addEventListener("input", validatePassword);
                                     </script>
 
-                                  
+
 
                                     <button type="submit" class="btn btn-dark">Đăng ký</button>
                                 </form>
