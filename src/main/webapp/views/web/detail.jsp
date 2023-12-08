@@ -53,6 +53,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css"/>
 
+
     </head>
 
     <body class="sub_page">
@@ -81,8 +82,33 @@
 
                             <form name="f" action="buycontroller" method="post">
                                 <div class="product__details__quantity">
-                                    <input class="pagination-link active" type="number" name="num" value="1" min="1" max="100"/>
+                                    <input id="quantityInput" class="pagination-link active" type="number" name="num" value="1" min="1" max="100"/>
                                 </div>
+
+                                <script>
+                                    // JavaScript code
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        // Get the input element
+                                        const quantityInput = document.getElementById('quantityInput');
+
+                                        // Add event listener for input change
+                                        quantityInput.addEventListener('change', function () {
+                                            // Get the value entered by the user
+                                            let enteredValue = parseInt(this.value);
+
+                                            // Check if the entered value is less than 1 or greater than 100
+                                            if (enteredValue < 1 || isNaN(enteredValue)) {
+                                                // If the value is less than 1 or not a number, set it to 1
+                                                this.value = 1;
+                                            } else if (enteredValue > 100) {
+                                                // If the value is greater than 100, set it to 100
+                                                this.value = 100;
+                                            }
+                                        });
+                                    });
+                                </script>
+
+
 
                                 <% if (ul == null) { %>
                                 <a href="./logincontroller" class="btn btn-dark">Thêm vào giỏ hàng</a>

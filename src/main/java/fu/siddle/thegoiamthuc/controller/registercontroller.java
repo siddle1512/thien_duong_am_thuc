@@ -62,7 +62,7 @@ public class registercontroller extends HttpServlet {
 
         //Send Email
         String msg = "Xin chào " + username + "! Chào mừng bạn đến nới thiên đương ẩm thực.";
-        Email.sendEmail(email, System.currentTimeMillis() + "", msg);
+        Email.sendEmail(email, "TDAT", msg);
 
         response.sendRedirect("./logincontroller");
     }

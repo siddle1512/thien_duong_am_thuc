@@ -8,7 +8,7 @@ public class Order {
     private String username;
 
     private int user_id;
-    private int total_price;
+    private long total_price;
     private String payment;
     private String status;
     private String start_date;
@@ -21,7 +21,7 @@ public class Order {
     }
 
     //hien thi them
-    public Order(int id, String username, int user_id, int total_price, String payment, String status, String start_date) {
+    public Order(int id, String username, int user_id, long total_price, String payment, String status, String start_date) {
         this.id = id;
         this.username = username;
         this.user_id = user_id;
@@ -31,7 +31,7 @@ public class Order {
         this.start_date = start_date;
     }
 
-    public Order(int id, int user_id, int total_price, String payment, String status, String start_date) {
+    public Order(int id, int user_id, long total_price, String payment, String status, String start_date) {
         this.id = id;
         this.user_id = user_id;
         this.total_price = total_price;
@@ -40,7 +40,7 @@ public class Order {
         this.start_date = start_date;
     }
 
-    public Order(int id, int user_id, int total_price, String payment, String status) {
+    public Order(int id, int user_id, long total_price, String payment, String status) {
         this.id = id;
         this.user_id = user_id;
         this.total_price = total_price;
@@ -48,7 +48,7 @@ public class Order {
         this.status = status;
     }
 
-    public Order(int user_id, int total_price, String payment, String status) {
+    public Order(int user_id, long total_price, String payment, String status) {
         this.user_id = user_id;
         this.total_price = total_price;
         this.payment = payment;
@@ -84,11 +84,11 @@ public class Order {
         this.user_id = user_id;
     }
 
-    public int getTotal_price() {
+    public long getTotal_price() {
         return total_price;
     }
 
-    public void setTotal_price(int total_price) {
+    public void setTotal_price(long total_price) {
         this.total_price = total_price;
     }
 
@@ -115,5 +115,7 @@ public class Order {
     public void setStart_date(String start_date) {
         this.start_date = start_date;
     }
+
+    
 
 }

@@ -39,7 +39,7 @@ public class checkoutcontroller extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
-        
+
         HttpSession session = request.getSession();
 
         //lay car
@@ -87,7 +87,7 @@ public class checkoutcontroller extends HttpServlet {
 
         List<Item> listI = cart.getItems();
 
-        int total = 0;
+        long total = 0;
         for (Item t : listI) {
             total += (t.getPrice() * t.getQuantity());
         }
@@ -115,7 +115,7 @@ public class checkoutcontroller extends HttpServlet {
 
     }
 
-    private static void handleVNPayCheckout(HttpServletRequest request, HttpServletResponse response, int totalPrice)
+    private static void handleVNPayCheckout(HttpServletRequest request, HttpServletResponse response, long totalPrice)
             throws UnsupportedEncodingException, IOException {
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
