@@ -2,6 +2,7 @@ package fu.siddle.thegoiamthuc.model.dao;
 
 import fu.siddle.thegoiamthuc.model.Fooditem;
 import fu.siddle.thegoiamthuc.model.Order;
+import fu.siddle.thegoiamthuc.model.User;
 import fu.siddle.thegoiamthuc.service.JDBC;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,7 +37,7 @@ public class OrderDAO implements DAO<Order> {
                 String username = rs.getString("username");
                 int user_id = rs.getInt("user_id");
 
-                double total_price = rs.getDouble("total_price");
+                int total_price = rs.getInt("total_price");
                 String payment = rs.getString("payment");
                 String status = rs.getString("status");
                 String start_date = rs.getString("create_at");
@@ -150,7 +151,7 @@ public class OrderDAO implements DAO<Order> {
                 String username = rs.getString("username");
                 int user_id = rs.getInt("user_id");
 
-                double total_price = rs.getDouble("total_price");
+                int total_price = rs.getInt("total_price");
                 String payment = rs.getString("payment");
                 String status = rs.getString("status");
                 String start_date = rs.getString("create_at");
@@ -166,4 +167,19 @@ public class OrderDAO implements DAO<Order> {
         return list;
     }
 
+    public void updateStatus(Order obj) {
+        try {
+            Connection conn = JDBC.getConnection();
+
+            PreparedStatement smt = conn.prepareStatement("UPDATE `order` SET status = ? WHERE id = ?");
+
+            smt.setString(1, obj.getStatus());
+            smt.setInt(2, obj.getId());
+
+            smt.executeUpdate();
+            JDBC.closeConnection(conn);
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
 }

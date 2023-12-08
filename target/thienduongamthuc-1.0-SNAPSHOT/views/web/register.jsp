@@ -77,19 +77,14 @@
                                     <div class="form-group">
                                         <label for="gender">Giới tính</label>
                                         <div>
-                                            <input type="radio" id="male" name="gender" value="nam" required>
+                                            <input type="radio" id="male" name="gender" value="Nam" required>
                                             <label for="male">Nam</label>
                                         </div>
                                         <div>
-                                            <input type="radio" id="female" name="gender" value="nữ" required>
+                                            <input type="radio" id="female" name="gender" value="Nữ" required>
                                             <label for="female">Nữ</label>
                                         </div>
                                         <!-- You can add more options (non-binary, etc.) if needed -->
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="username">Địa chỉ</label>
-                                        <input type="text" class="form-control" id="username" name="adress" required>
                                     </div>
 
                                     <div class="form-group">
@@ -124,17 +119,11 @@
                                                 confirmPassword.setCustomValidity('');
                                             }
                                         }
-
-
                                         document.getElementById("password").addEventListener("input", validatePassword);
                                         document.getElementById("confirmPassword").addEventListener("input", validatePassword);
                                     </script>
 
-                                    <div class="form-group">
-                                        <label for="profilePicture">Ảnh đại diện</label>
-                                        <input type="file" class="form-control-file" id="profilePicture" name="profilePicture" accept="image/*">
-                                        <!-- 'accept="image/*"' ensures only image files can be uploaded -->
-                                    </div>
+                                  
 
                                     <button type="submit" class="btn btn-dark">Đăng ký</button>
                                 </form>

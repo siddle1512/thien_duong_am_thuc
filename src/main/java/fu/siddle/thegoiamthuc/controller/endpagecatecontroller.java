@@ -21,6 +21,7 @@ public class endpagecatecontroller extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
+        
         HttpSession session = request.getSession();
 
         String cid = (String) session.getAttribute("cid");

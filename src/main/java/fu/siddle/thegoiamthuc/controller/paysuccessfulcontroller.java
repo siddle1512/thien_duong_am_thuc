@@ -26,6 +26,7 @@ public class paysuccessfulcontroller extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
+        
         HttpSession session = request.getSession();
 
         List<User> lisU = (List<User>) session.getAttribute("listuserlogin");

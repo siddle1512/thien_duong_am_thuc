@@ -110,9 +110,6 @@
                 margin: 10px auto;
             }
 
-
-
-
             .tabs-vertical-env .tab-content {
                 background: #ffffff;
                 display: table-cell;
@@ -227,6 +224,9 @@
                 font-size: 8px;
                 line-height: 5px;
             }
+
+            @import url('https://fonts.googleapis.com/css?family=Assistant');
+
         </style>
 
         <!-- Basic -->
@@ -305,9 +305,29 @@
                                 <li class="active">
                                     <a href="#profile" data-toggle="tab" aria-expanded="true">
 
-                                        <span class="hidden-xs">Lịch sử mua hàng</span>
+                                        <span class="hidden-xs">Toàn bộ đơn hàng</span>
                                     </a>
                                 </li>
+
+                                <li class>
+                                    <a href="#processing" data-toggle="tab" aria-expanded="true">
+
+                                        <span class="hidden-xs">Đơn hàng đang xử lý</span>
+                                    </a>
+                                </li>
+                                <li class>
+                                    <a href="#paied" data-toggle="tab" aria-expanded="true">
+
+                                        <span class="hidden-xs">Đơn hàng đã thanh toán</span>
+                                    </a>
+                                </li>
+                                <li class>
+                                    <a href="#rejected" data-toggle="tab" aria-expanded="true">
+
+                                        <span class="hidden-xs">Đơn hàng đã hủy</span>
+                                    </a>
+                                </li>
+
                                 <li class>
                                     <a href="#settings" data-toggle="tab" aria-expanded="false">
                                         <span class="visible-xs"><i class="fa fa-cog"></i></span>
@@ -327,6 +347,7 @@
                                     </a>
                                 </li>
                             </ul>
+
                             <div class="tab-content">
 
                                 <div class="tab-pane active" id="profile">
@@ -338,8 +359,8 @@
                                                     <th scope="col">Stt</th>
                                                     <th scope="col">Tổng tiền</th>
                                                     <th scope="col">Phương thức thanh toán</th>
-                                                    <th scope="col">Ngày mua</th>
                                                     <th scope="col">Trạng thái</th>
+                                                    <th scope="col">Ngày mua</th>                                             
                                                     <th scope="col">Thao tác</th>
                                                 </tr>
                                             </thead>
@@ -351,7 +372,21 @@
                                                         <td>${n = n +1}</td>
                                                         <td>${i.total_price}₫</td>
                                                         <td>${i.payment}</td>
-                                                        <td>${i.status}</td>
+
+                                                        <c:choose>
+                                                            <c:when test="${i.status == 'Đang xử lý'}">
+                                                                <td class="badge badge-info">${i.status}</td>
+                                                            </c:when>
+
+                                                            <c:when test="${i.status == 'Đã hủy'}">
+                                                                <td class="badge badge-danger">${i.status}</td>
+                                                            </c:when>
+
+                                                            <c:otherwise>
+                                                                <td class="badge badge-success">${i.status}</td>
+                                                            </c:otherwise>
+                                                        </c:choose> 
+
                                                         <td>${i.start_date}</td>
 
                                                         <td>
@@ -360,7 +395,72 @@
                                                                     <a class="btn btn-dark btn-sm"  href="./userordercontroller?query=${i.id}" >
                                                                         Xem
                                                                     </a>
-                                                                    <a class="btn btn-danger btn-sm"  href="./userordercontroller?query=${i.id}" >
+                                                                    <a class="btn btn-danger btn-sm"  href="./cancelcontroller?query=${i.id}" >
+                                                                        Hủy
+                                                                    </a>
+                                                                </c:when>
+
+                                                                <c:otherwise>
+                                                                    <a class="btn btn-dark btn-sm"  href="./userordercontroller?query=${i.id}" >
+                                                                        Xem
+                                                                    </a>
+                                                                </c:otherwise>
+                                                            </c:choose> 
+                                                        </td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </c:forEach>                                       
+
+                                        </table>                                     
+                                    </div>
+
+                                </div>
+
+                                <div class="tab-pane" id="processing">
+
+                                    <div class="modal-body">
+                                        <table class="table table-image">
+                                            <thead>
+                                                <tr>                    
+                                                    <th scope="col">Stt</th>
+                                                    <th scope="col">Tổng tiền</th>
+                                                    <th scope="col">Phương thức thanh toán</th>
+                                                    <th scope="col">Trạng thái</th>
+                                                    <th scope="col">Ngày mua</th>                                             
+                                                    <th scope="col">Thao tác</th>
+                                                </tr>
+                                            </thead>
+
+                                            <c:set var="n" value="0"/>
+                                            <c:forEach items="${sessionScope.listPr}" var="i">
+                                                <tbody>
+                                                    <tr>                                                     
+                                                        <td>${n = n +1}</td>
+                                                        <td>${i.total_price}₫</td>
+                                                        <td>${i.payment}</td>
+                                                        <c:choose>
+                                                            <c:when test="${i.status == 'Đang xử lý'}">
+                                                                <td class="badge badge-info">${i.status}</td>
+                                                            </c:when>
+
+                                                            <c:when test="${i.status == 'Đã hủy'}">
+                                                                <td class="badge badge-danger">${i.status}</td>
+                                                            </c:when>
+
+                                                            <c:otherwise>
+                                                                <td class="badge badge-success">${i.status}</td>
+                                                            </c:otherwise>
+                                                        </c:choose> 
+                                                        <td>${i.start_date}</td>
+
+                                                        <td>
+                                                            <c:choose>
+                                                                <c:when test="${i.status == 'Đang xử lý'}">
+                                                                    <a class="btn btn-dark btn-sm"  href="./userordercontroller?query=${i.id}" >
+                                                                        Xem
+                                                                    </a>
+                                                                    <a class="btn btn-danger btn-sm"  href="./cancelcontroller?query=${i.id}" >
                                                                         Hủy
                                                                     </a>
                                                                 </c:when>
@@ -382,7 +482,135 @@
 
                                 </div>
 
+                                <div class="tab-pane" id="paied">
 
+                                    <div class="modal-body">
+                                        <table class="table table-image">
+                                            <thead>
+                                                <tr>                    
+                                                    <th scope="col">Stt</th>
+                                                    <th scope="col">Tổng tiền</th>
+                                                    <th scope="col">Phương thức thanh toán</th>
+                                                    <th scope="col">Trạng thái</th>
+                                                    <th scope="col">Ngày mua</th>                                             
+                                                    <th scope="col">Thao tác</th>
+                                                </tr>
+                                            </thead>
+
+                                            <c:set var="n" value="0"/>
+                                            <c:forEach items="${sessionScope.listPa}" var="i">
+                                                <tbody>
+                                                    <tr>                                                     
+                                                        <td>${n = n +1}</td>
+                                                        <td>${i.total_price}₫</td>
+                                                        <td>${i.payment}</td>
+                                                        <c:choose>
+                                                            <c:when test="${i.status == 'Đang xử lý'}">
+                                                                <td class="badge badge-info">${i.status}</td>
+                                                            </c:when>
+
+                                                            <c:when test="${i.status == 'Đã hủy'}">
+                                                                <td class="badge badge-danger">${i.status}</td>
+                                                            </c:when>
+
+                                                            <c:otherwise>
+                                                                <td class="badge badge-success">${i.status}</td>
+                                                            </c:otherwise>
+                                                        </c:choose> 
+                                                        <td>${i.start_date}</td>
+
+                                                        <td>
+                                                            <c:choose>
+                                                                <c:when test="${i.status == 'Đang xử lý'}">
+                                                                    <a class="btn btn-dark btn-sm"  href="./userordercontroller?query=${i.id}" >
+                                                                        Xem
+                                                                    </a>
+                                                                    <a class="btn btn-danger btn-sm"  href="./cancelcontroller?query=${i.id}" >
+                                                                        Hủy
+                                                                    </a>
+                                                                </c:when>
+
+                                                                <c:otherwise>
+                                                                    <a class="btn btn-dark btn-sm"  href="./userordercontroller?query=${i.id}" >
+                                                                        Xem
+                                                                    </a>
+                                                                </c:otherwise>
+                                                            </c:choose> 
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </c:forEach>                                       
+
+                                        </table>                                     
+                                    </div>
+
+                                </div>
+
+                                <div class="tab-pane" id="rejected">
+
+                                    <div class="modal-body">
+                                        <table class="table table-image">
+                                            <thead>
+                                                <tr>                    
+                                                    <th scope="col">Stt</th>
+                                                    <th scope="col">Tổng tiền</th>
+                                                    <th scope="col">Phương thức thanh toán</th>
+                                                    <th scope="col">Trạng thái</th>
+                                                    <th scope="col">Ngày mua</th>                                             
+                                                    <th scope="col">Thao tác</th>
+                                                </tr>
+                                            </thead>
+
+                                            <c:set var="n" value="0"/>
+                                            <c:forEach items="${sessionScope.listRe}" var="i">
+                                                <tbody>
+                                                    <tr>                                                     
+                                                        <td>${n = n +1}</td>
+                                                        <td>${i.total_price}₫</td>
+                                                        <td>${i.payment}</td>
+                                                        <c:choose>
+                                                            <c:when test="${i.status == 'Đang xử lý'}">
+                                                                <td class="badge badge-info">${i.status}</td>
+                                                            </c:when>
+
+                                                            <c:when test="${i.status == 'Đã hủy'}">
+                                                                <td class="badge badge-danger">${i.status}</td>
+                                                            </c:when>
+
+                                                            <c:otherwise>
+                                                                <td class="badge badge-success">${i.status}</td>
+                                                            </c:otherwise>
+                                                        </c:choose> 
+                                                        <td>${i.start_date}</td>
+
+                                                        <td>
+                                                            <c:choose>
+                                                                <c:when test="${i.status == 'Đang xử lý'}">
+                                                                    <a class="btn btn-dark btn-sm"  href="./userordercontroller?query=${i.id}" >
+                                                                        Xem
+                                                                    </a>
+                                                                    <a class="btn btn-danger btn-sm"  href="./cancelcontroller?query=${i.id}" >
+                                                                        Hủy
+                                                                    </a>
+                                                                </c:when>
+
+                                                                <c:otherwise>
+                                                                    <a class="btn btn-dark btn-sm"  href="./userordercontroller?query=${i.id}" >
+                                                                        Xem
+                                                                    </a>
+                                                                </c:otherwise>
+                                                            </c:choose> 
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </c:forEach>                                       
+
+                                        </table>                                     
+                                    </div>
+
+                                </div>
                                 <div class="tab-pane" id="settings">
 
                                     <form action="updateprofilecontroller" method="POST" enctype="multipart/form-data">

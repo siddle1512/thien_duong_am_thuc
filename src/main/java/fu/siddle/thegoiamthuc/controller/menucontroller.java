@@ -8,6 +8,7 @@ import fu.siddle.thegoiamthuc.model.Order;
 import fu.siddle.thegoiamthuc.model.dao.CategoryDAO;
 import fu.siddle.thegoiamthuc.model.dao.FooditemDAO;
 import fu.siddle.thegoiamthuc.model.dao.OrderDAO;
+import fu.siddle.thegoiamthuc.service.Email;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -27,7 +28,7 @@ public class menucontroller extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html; charset=UTF-8");
+        response.setContentType("text/html; charset=UTF-8");       
 
         String id = "1";
         List<Fooditem> listF = FooditemDAO.getInstance().getFoodoffset(id);

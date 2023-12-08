@@ -74,20 +74,20 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="product__details__text">
                             <h3><%=listfdetail.get(0).getName()%></h3>
- 
+
                             <div class="product__details__price">
                                 <%=listfdetail.get(0).getPrice()%>₫
                             </div>
 
                             <form name="f" action="buycontroller" method="post">
                                 <div class="product__details__quantity">
-                                    <input class="pagination-link active" type="number" name="num" value="1"/>
+                                    <input class="pagination-link active" type="number" name="num" value="1" min="1" max="100"/>
                                 </div>
 
                                 <% if (ul == null) { %>
                                 <a href="./logincontroller" class="btn btn-dark">Thêm vào giỏ hàng</a>
                                 <% } else {%>
-                                <input type="submit" class="btn btn-dark" onclick="buy(<%=listfdetail.get(0).getId()%>)" value="Thêm vào rỏ hàng"/>
+                                <input type="submit" class="btn btn-dark" onclick="buy(<%=listfdetail.get(0).getId()%>)" value="Thêm vào giỏ hàng"/>
                                 <% } %>
                             </form>
                         </div>
@@ -176,10 +176,10 @@
         <script src="${pageContext.request.contextPath}/assets/js/custom.js"></script>
 
         <script type="text/javascript">
-                                function buy(id) {
-                                    document.f.action = "buycontroller?id=" + id;
-                                    document.f.submit()();
-                                }
+                                    function buy(id) {
+                                        document.f.action = "buycontroller?id=" + id;
+                                        document.f.submit()();
+                                    }
         </script>
     </body>
 

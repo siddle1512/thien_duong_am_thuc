@@ -2,6 +2,7 @@ package fu.siddle.thegoiamthuc.controller;
 
 import fu.siddle.thegoiamthuc.model.User;
 import fu.siddle.thegoiamthuc.model.dao.UserDAO;
+import fu.siddle.thegoiamthuc.service.Email;
 import fu.siddle.thegoiamthuc.service.Hash;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -46,41 +47,23 @@ public class registercontroller extends HttpServlet {
         String birth_year = request.getParameter("birth_year");
         String gender = request.getParameter("gender");
         String adress = request.getParameter("adress");
-
         List<String> address = new ArrayList<>();;
-        address.add(adress);
-
         String email = request.getParameter("email");
-
         String password = request.getParameter("password");
 
+        //Hash Password
         String hashed_password = Hash.SHA256(password);
 
-        Part file = request.getPart("profilePicture");
-        String imageFileName = file.getSubmittedFileName();
-
-        String uploadPath = "D:/webjava/amthucnew/thien_duong_am_thuc/src/main/webapp/assets/images/" + imageFileName;
-
-        System.out.println("Upload Path : " + uploadPath);
-
-        try {
-
-            FileOutputStream fos = new FileOutputStream(uploadPath);
-            InputStream is = file.getInputStream();
-
-            byte[] data = new byte[is.available()];
-            is.read(data);
-            fos.write(data);
-            fos.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        //Default Avatar
+        String imageFileName = "360_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg";
 
         User u = new User(username, birth_year, gender, email, hashed_password, imageFileName, address);
-
         UserDAO.getInstance().insert(u);
-        
+
+        //Send Email
+        String msg = "Xin chào " + username + "! Chào mừng bạn đến nới thiên đương ẩm thực.";
+        Email.sendEmail(email, System.currentTimeMillis() + "", msg);
+
         response.sendRedirect("./logincontroller");
     }
 

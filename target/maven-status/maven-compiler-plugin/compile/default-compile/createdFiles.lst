@@ -16,6 +16,8 @@ fu\siddle\thegoiamthuc\service\JDBC.class
 fu\siddle\thegoiamthuc\controller\updateprofilecontroller.class
 fu\siddle\thegoiamthuc\model\dao\FooditemDAO.class
 fu\siddle\thegoiamthuc\service\Hash.class
+fu\siddle\thegoiamthuc\controller\cancelcontroller.class
+fu\siddle\thegoiamthuc\service\Email.class
 fu\siddle\thegoiamthuc\controller\logoutcontroller.class
 fu\siddle\thegoiamthuc\model\User.class
 fu\siddle\thegoiamthuc\controller\logincontroller.class
@@ -26,6 +28,7 @@ fu\siddle\thegoiamthuc\controller\searchcontroller.class
 fu\siddle\thegoiamthuc\controller\indexcontroller.class
 fu\siddle\thegoiamthuc\controller\buycontroller.class
 fu\siddle\thegoiamthuc\model\dao\CategoryDAO.class
+fu\siddle\thegoiamthuc\service\Email$1.class
 fu\siddle\thegoiamthuc\controller\Admin\adindexcontroller.class
 fu\siddle\thegoiamthuc\controller\profilecontroller.class
 fu\siddle\thegoiamthuc\controller\aboutcontroller.class

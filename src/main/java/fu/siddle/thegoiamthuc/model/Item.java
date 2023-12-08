@@ -4,12 +4,12 @@ public class Item {
 
     private Fooditem fooditem;
     private int quantity;
-    private double price;
+    private int price;
 
     public Item() {
     }
 
-    public Item(Fooditem fooditem, int quantity, double price) {
+    public Item(Fooditem fooditem, int quantity, int price) {
         this.fooditem = fooditem;
         this.quantity = quantity;
         this.price = price;
@@ -31,11 +31,11 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

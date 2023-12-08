@@ -32,7 +32,7 @@ public class updateaddresscontroller extends HttpServlet {
         String district = request.getParameter("district");
         String ward = request.getParameter("ward");
 
-        String address = addr + ", " + city + ", " + district + ", " + ward;
+        String address = addr + ", " + ward + ", " + district + ", " + city;
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("user");
 

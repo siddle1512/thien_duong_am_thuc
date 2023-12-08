@@ -3,12 +3,12 @@ package fu.siddle.thegoiamthuc.model;
 public class Order {
 
     private int id;
-    
+
     //hien thi them
     private String username;
-    
+
     private int user_id;
-    private double total_price;
+    private int total_price;
     private String payment;
     private String status;
     private String start_date;
@@ -21,7 +21,7 @@ public class Order {
     }
 
     //hien thi them
-    public Order(int id, String username, int user_id, double total_price, String payment, String status, String start_date) {
+    public Order(int id, String username, int user_id, int total_price, String payment, String status, String start_date) {
         this.id = id;
         this.username = username;
         this.user_id = user_id;
@@ -30,10 +30,8 @@ public class Order {
         this.status = status;
         this.start_date = start_date;
     }
-    
-    
 
-    public Order(int id, int user_id, double total_price, String payment, String status, String start_date) {
+    public Order(int id, int user_id, int total_price, String payment, String status, String start_date) {
         this.id = id;
         this.user_id = user_id;
         this.total_price = total_price;
@@ -42,7 +40,7 @@ public class Order {
         this.start_date = start_date;
     }
 
-    public Order(int id, int user_id, double total_price, String payment, String status) {
+    public Order(int id, int user_id, int total_price, String payment, String status) {
         this.id = id;
         this.user_id = user_id;
         this.total_price = total_price;
@@ -50,10 +48,15 @@ public class Order {
         this.status = status;
     }
 
-    public Order(int user_id, double total_price, String payment, String status) {
+    public Order(int user_id, int total_price, String payment, String status) {
         this.user_id = user_id;
         this.total_price = total_price;
         this.payment = payment;
+        this.status = status;
+    }
+
+    public Order(int id, String status) {
+        this.id = id;
         this.status = status;
     }
 
@@ -65,6 +68,14 @@ public class Order {
         this.id = id;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public int getUser_id() {
         return user_id;
     }
@@ -73,11 +84,11 @@ public class Order {
         this.user_id = user_id;
     }
 
-    public double getTotal_price() {
+    public int getTotal_price() {
         return total_price;
     }
 
-    public void setTotal_price(double total_price) {
+    public void setTotal_price(int total_price) {
         this.total_price = total_price;
     }
 
@@ -97,14 +108,6 @@ public class Order {
         this.status = status;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getStart_date() {
         return start_date;
     }
@@ -112,7 +115,5 @@ public class Order {
     public void setStart_date(String start_date) {
         this.start_date = start_date;
     }
-    
-    
 
 }
