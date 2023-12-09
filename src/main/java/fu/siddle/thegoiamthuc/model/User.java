@@ -1,16 +1,18 @@
 package fu.siddle.thegoiamthuc.model;
 
+import java.util.List;
 import java.util.Objects;
 
 public class User {
 
-    String username;
-    String birth_year;
-    String gender;
-    String email;
-    String hashed_password;
-    String avatar_path;
-    String adress;
+    private int id;
+    private String username;
+    private String birth_year;
+    private String gender;
+    private String email;
+    private String hashed_password;
+    private String avatar_path;
+    private List<String> adress;
 
     public User() {
     }
@@ -19,8 +21,10 @@ public class User {
         this.email = email;
         this.hashed_password = hashed_password;
     }
+    
+    
 
-    public User(String username, String birth_year, String gender, String email, String hashed_password, String avatar_path, String adress) {
+    public User(String username, String birth_year, String gender, String email, String hashed_password, String avatar_path, List<String> adress) {
         this.username = username;
         this.birth_year = birth_year;
         this.gender = gender;
@@ -28,6 +32,27 @@ public class User {
         this.hashed_password = hashed_password;
         this.avatar_path = avatar_path;
         this.adress = adress;
+    }
+    
+    
+
+    public User(int id, String username, String birth_year, String gender, String email, String hashed_password, String avatar_path, List<String> adress) {
+        this.id = id;
+        this.username = username;
+        this.birth_year = birth_year;
+        this.gender = gender;
+        this.email = email;
+        this.hashed_password = hashed_password;
+        this.avatar_path = avatar_path;
+        this.adress = adress;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -78,17 +103,12 @@ public class User {
         this.avatar_path = avatar_path;
     }
 
-    public String getAdress() {
+    public List<String> getAdress() {
         return adress;
     }
 
-    public void setAdress(String adress) {
+    public void setAdress(List<String> adress) {
         this.adress = adress;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" + "username=" + username + ", birth_year=" + birth_year + ", gender=" + gender + ", email=" + email + ", hashed_password=" + hashed_password + ", avatar_path=" + avatar_path + ", adress=" + adress + '}';
     }
 
 }
