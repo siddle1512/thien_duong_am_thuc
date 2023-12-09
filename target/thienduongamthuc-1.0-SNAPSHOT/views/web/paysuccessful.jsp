@@ -35,6 +35,6 @@
         <div class="success-message">
             <p>Bạn đã thanh toán thành công!</p>
         </div>
-        <a href="./indexcontroller" class="go-back-button">Trở về</a>
+        <a href="./indexcontroller" class="go-back-button">Trở về</a>s
     </body>
 </html>

@@ -24,6 +24,7 @@
             Product Admin CSS Template
             https://templatemo.com/tm-524-product-admin
         -->
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon.png" type="">
     </head>
 
     <body id="reportsPage">
@@ -36,51 +37,7 @@
                     <p class="text-white mt-5 mb-5">Xin chào, ${sessionScope.username} (Admin) <b></b></p>
                 </div>
             </div>
-            <!-- row -->
-            <div class="row tm-content-row">
 
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-                    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow">
-                        <h2 class="tm-block-title">Danh sách người dùng</h2>
-                        <div class="tm-notification-items">
-
-                            <c:forEach items="${sessionScope.listU}" var="i">
-                                <div class="media tm-notification-item">
-
-                                    <div class="media-body">
-
-                                        <p class="mb-2"><b></b>(${i.username})</p>
-
-                                    </div>
-                                </div>
-                            </c:forEach>
-
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-                    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow">
-                        <h2 class="tm-block-title">Người dùng đang hoạt động</h2>
-                        <div class="tm-notification-items">
-
-                            <c:forEach items="${sessionScope.listUst}" var="i">
-                                <div class="media tm-notification-item">
-
-                                    <div class="media-body">
-
-                                        <p class="mb-2"><b></b>(${i.username}) Đang hoạt động </p>
-
-                                    </div>
-                                </div>
-                            </c:forEach>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!--Order part-->
             <div class="col-12 tm-block-col">
@@ -106,21 +63,22 @@
                                 <tr>                                                                     
                                     <th scope="row"><b>${n = n +1}</b></th>
                                     <td><b>${i.username}</b></td>
-                                    <td><b>${i.total_price}</b></td>
+                                    <td><b>${i.total_price}₫</b></td>
                                     <td><b>${i.payment}</b></td>
                                     <td><b>${i.start_date}</b></td>
 
                                     <c:choose>
                                         <c:when test="${i.status == 'Đang xử lý'}">
-                                            <td class="badge badge-info">${i.status}</td>
+                                            <td><span class="badge badge-info">${i.status}</span></td>
                                         </c:when>
 
                                         <c:when test="${i.status == 'Đã hủy'}">
-                                            <td class="badge badge-danger">${i.status}</td>
+                                            <td><span class="badge badge-danger">${i.status}</span></td>
+
                                         </c:when>
 
                                         <c:otherwise>
-                                            <td class="badge badge-success">${i.status}</td>
+                                            <td><span class="badge badge-success">${i.status}</span></td>
                                         </c:otherwise>
                                     </c:choose> 
 
@@ -135,11 +93,11 @@
 
         </div>
     </div>
-    
+
     <br><br/>
     <br><br/>
     <%@include file="../layout/footerad.jsp" %>
-    
+
 </div>
 
 <script src="${pageContext.request.contextPath}/assets/js/jquery-3.3.1.min.js"></script>

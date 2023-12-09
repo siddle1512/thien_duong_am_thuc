@@ -19,15 +19,11 @@ public class addeletecontroller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("views/dashboard/listfooditem.jsp");
-        rd.forward(request, response);
-
         HttpSession session = request.getSession();
-        
+
         String id = request.getParameter("query");
-        
+
         FooditemDAO.getInstance().remove(id);
-        
 
         response.sendRedirect("./adlistfooditemcontroller");
 
@@ -36,8 +32,6 @@ public class addeletecontroller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-
 
     }
 

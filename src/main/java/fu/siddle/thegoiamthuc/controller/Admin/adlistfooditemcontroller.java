@@ -4,6 +4,7 @@ import fu.siddle.thegoiamthuc.model.Fooditem;
 import fu.siddle.thegoiamthuc.model.dao.FooditemDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,8 +24,13 @@ public class adlistfooditemcontroller extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
 
         HttpSession session = request.getSession();
+
         List<Fooditem> listf = FooditemDAO.getInstance().getAll();
         session.setAttribute("listf", listf);
+
+        List<List<Fooditem>> listf1 = new ArrayList<>();
+
+        session.setAttribute("listf1", listf1);
 
         RequestDispatcher rd = request.getRequestDispatcher("/views/dashboard/listfooditem.jsp");
         rd.forward(request, response);

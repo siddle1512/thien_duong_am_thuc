@@ -27,81 +27,105 @@
     </head>
 
     <body id="reportsPage">
-        
+
         <%@include file="../layout/headerad.jsp" %>
 
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <p class="text-white mt-5 mb-5">Xin chào, ${sessionScope.username} (Admin) <b></b></p>
-                    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-white mt-5 mb-5">Xin chào, ${sessionScope.username} (Admin) <b></b></p>
                 </div>
-                <!-- row -->
+            </div>
+            <!-- row -->
 
 
-                <!--Order part-->
-                <div class="col-12 tm-block-col">
-                    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
-                        <h2 class="tm-block-title">Danh sách mua hàng</h2>
-                        <form action="adupdatecontroller" method="POST">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Tên sản phẩm</th>
-                                        <th scope="col">Loại sản phẩm</th>
-                                        <th scope="col">Giá tiền</th>
-                                        <th scope="col">Ảnh sản phẩm</th>
+            <!--Order part-->
+            <div class="col-12 tm-block-col">
+                <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+                    <h2 class="tm-block-title">Danh sách mua hàng</h2>
+                    <form action="adupdatecontroller" method="POST">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Tên sản phẩm</th>
+                                    <th scope="col">Loại sản phẩm</th>
+                                    <th scope="col">Giá tiền</th>
+                                    <th scope="col">Ảnh sản phẩm</th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+
+                                <c:forEach items="${sessionScope.listff}" var="i">
+
+                                    <tr> 
+                                        <td><input class="form-control" type="text" name="name" value="${i.name}"></input></td>
+                                        <td>
+                                            <select class="form-control" name="category_id" id="loaiSanPham">
+                                                <c:forEach items="${sessionScope.listC}" var="i">
+                                                    <option value="${i.id}">${i.name}</option>
+                                                </c:forEach>
+
+                                            </select>
+                                        </td>
+                                        <td>
+
+                                            <input id="quantityInput" class="form-control" type="number" name="price" value="200" min="1000" max="1000000" required/>
+
+                                            <script>
+                                                // JavaScript code
+                                                document.addEventListener('DOMContentLoaded', function () {
+                                                    // Get the input element
+                                                    const quantityInput = document.getElementById('quantityInput');
+
+                                                    // Add event listener for input change
+                                                    quantityInput.addEventListener('change', function () {
+                                                        // Get the value entered by the user
+                                                        let enteredValue = parseInt(this.value);
+
+                                                        // Check if the entered value is less than 1 or greater than 100
+                                                        if (enteredValue < 1000 || isNaN(enteredValue)) {
+                                                            // If the value is less than 1 or not a number, set it to 1
+                                                            this.value = 1000;
+                                                        } else if (enteredValue > 1000000) {
+                                                            // If the value is greater than 100, set it to 100
+                                                            this.value = 1000000;
+                                                        }
+                                                    });
+                                                });
+                                            </script>
+
+                                        </td>
+                                        <td><input class="form-control" type="text" name="image" value="${i.image}"></input></td>
                                     </tr>
 
-                                </thead>
-                                <tbody>
-
-                                    <c:forEach items="${sessionScope.listff}" var="i">
-
-                                        <tr> 
-                                            <td><input type="text" name="name" value="${i.name}"></input></td>
-                                            <td>
-                                                <select name="category_id">
-                                                    <option value="1">Đồ ăn</option>
-                                                    <option value="2">Nước uống</option>
-                                                    <option value="3">Thức ăn nhẹ</option>
-                                                    <option value="4">Gà rán</option>
-                                                    <option value="5">Burger</option>
-                                                    <option value="6">Combo</option>
-                                                    <option value="7">Món tráng miệng</option>
-                                                </select>
-                                            </td>
-                                            <td><input type="number" name="price" value="${i.price}"></input></td>
-                                            <td><input type="text" name="image" value="${i.image}"></input></td>
-                                        </tr>
-
-                                    </c:forEach>
-                                </tbody>
-                            </table>
-                            <button type="submit" class="btn btn-dark">Cập nhật</button>
-                        </form>
-                    </div>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                        <button type="submit" class="btn btn-dark">Cập nhật</button>
+                    </form>
                 </div>
-                <!--End Order part-->
-
             </div>
+            <!--End Order part-->
+
         </div>
-                    
-        <br><br/>
-        <br><br/>
-        <%@include file="../layout/footerad.jsp" %>
-        
     </div>
 
-    <script src="${pageContext.request.contextPath}/assets/js/jquery-3.3.1.min.js"></script>
-    <!-- https://jquery.com/download/ -->
-    <script src="${pageContext.request.contextPath}/assets/js/moment.min.js"></script>
-    <!-- https://momentjs.com/ -->
-    <script src="${pageContext.request.contextPath}/assets/js/Chart.min.js"></script>
-    <!-- http://www.chartjs.org/docs/latest/ -->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-    <!-- https://getbootstrap.com/ -->
-    <script src="${pageContext.request.contextPath}/assets/js/tooplate-scripts.js"></script>
+    <br><br/>
+    <br><br/>
+    <%@include file="../layout/footerad.jsp" %>
+
+</div>
+
+<script src="${pageContext.request.contextPath}/assets/js/jquery-3.3.1.min.js"></script>
+<!-- https://jquery.com/download/ -->
+<script src="${pageContext.request.contextPath}/assets/js/moment.min.js"></script>
+<!-- https://momentjs.com/ -->
+<script src="${pageContext.request.contextPath}/assets/js/Chart.min.js"></script>
+<!-- http://www.chartjs.org/docs/latest/ -->
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+<!-- https://getbootstrap.com/ -->
+<script src="${pageContext.request.contextPath}/assets/js/tooplate-scripts.js"></script>
 
 </body>
 

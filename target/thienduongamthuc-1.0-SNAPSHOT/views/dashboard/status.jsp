@@ -24,6 +24,7 @@
             Product Admin CSS Template
             https://templatemo.com/tm-524-product-admin
         -->
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon.png" type="">
     </head>
 
     <body id="reportsPage">
@@ -68,26 +69,28 @@
                                     <td><b>${i.start_date}</b></td>
                                     <c:choose>
                                         <c:when test="${i.status == 'Đang xử lý'}">
-                                            <td class="badge badge-info">${i.status}</td>
-                                        </c:when>
+                                            <td><span class="badge badge-info">${i.status}</span></td>
+                                            </c:when>
 
                                         <c:when test="${i.status == 'Đã hủy'}">
-                                            <td class="badge badge-danger">${i.status}</td>
+                                            <td><span class="badge badge-danger">${i.status}</span></td>
+
                                         </c:when>
 
                                         <c:otherwise>
-                                    <a class="badge badge-success">${i.status}</td>
-                                    </c:otherwise>
-                                </c:choose>
-                                <td>
-                                    <a class="btn btn-danger btn-sm"  href="./updatestatuscontroller?query=${i.id}" >
-                                        Xác nhận
-                                    </a>
-                                </td>
+                                            <td><span class="badge badge-success">${i.status}</span></td>
+                                            </c:otherwise>
+                                        </c:choose> 
+
+                                    <td>
+                                        <a class="btn btn-danger btn-sm"  href="./updatestatuscontroller?query=${i.id}" >
+                                            Xác nhận
+                                        </a>
+                                    </td>
                                 </tr>
 
                             </c:forEach>
-                            </tbody>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -95,11 +98,11 @@
 
         </div>
     </div>
-    
+
     <br><br/>
     <br><br/>
     <%@include file="../layout/footerad.jsp" %>
-    
+
 </div>
 
 <script src="${pageContext.request.contextPath}/assets/js/jquery-3.3.1.min.js"></script>

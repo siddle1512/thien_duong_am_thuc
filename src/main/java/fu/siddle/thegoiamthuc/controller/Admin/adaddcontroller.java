@@ -1,7 +1,9 @@
 package fu.siddle.thegoiamthuc.controller.Admin;
 
+import fu.siddle.thegoiamthuc.model.Category;
 import fu.siddle.thegoiamthuc.model.Fooditem;
 import fu.siddle.thegoiamthuc.model.User;
+import fu.siddle.thegoiamthuc.model.dao.CategoryDAO;
 import fu.siddle.thegoiamthuc.model.dao.FooditemDAO;
 import fu.siddle.thegoiamthuc.model.dao.UserDAO;
 import fu.siddle.thegoiamthuc.service.Email;
@@ -25,9 +27,13 @@ public class adaddcontroller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+
+        List<Category> listC = CategoryDAO.getInstance().getAll();
+        session.setAttribute("listC", listC);
+
         RequestDispatcher rd = request.getRequestDispatcher("views/dashboard/adadd.jsp");
         rd.forward(request, response);
-        
 
     }
 
@@ -37,6 +43,7 @@ public class adaddcontroller extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
 
+        HttpSession session = request.getSession();
 
         String name = request.getParameter("name");
         String category_id = request.getParameter("category_id");
@@ -48,6 +55,9 @@ public class adaddcontroller extends HttpServlet {
 
         Fooditem f = new Fooditem(name, cate_id, pr, image);
         FooditemDAO.getInstance().insertFooditem(f);
+
+        List<Fooditem> listf = FooditemDAO.getInstance().getAll();
+        session.setAttribute("listf", listf);
 
         response.sendRedirect("./adlistfooditemcontroller");
 

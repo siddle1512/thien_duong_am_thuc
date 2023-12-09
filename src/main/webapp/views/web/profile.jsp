@@ -375,17 +375,18 @@
 
                                                         <c:choose>
                                                             <c:when test="${i.status == 'Đang xử lý'}">
-                                                                <td class="badge badge-info">${i.status}</td>
-                                                            </c:when>
+                                                                <td><span class="badge badge-info">${i.status}</span></td>
+                                                                </c:when>
 
                                                             <c:when test="${i.status == 'Đã hủy'}">
-                                                                <td class="badge badge-danger">${i.status}</td>
+                                                                <td><span class="badge badge-danger">${i.status}</span></td>
+
                                                             </c:when>
 
                                                             <c:otherwise>
-                                                                <td class="badge badge-success">${i.status}</td>
-                                                            </c:otherwise>
-                                                        </c:choose> 
+                                                                <td><span class="badge badge-success">${i.status}</span></td>
+                                                                </c:otherwise>
+                                                            </c:choose> 
 
                                                         <td>${i.start_date}</td>
 
@@ -441,17 +442,18 @@
                                                         <td>${i.payment}</td>
                                                         <c:choose>
                                                             <c:when test="${i.status == 'Đang xử lý'}">
-                                                                <td class="badge badge-info">${i.status}</td>
-                                                            </c:when>
+                                                                <td><span class="badge badge-info">${i.status}</span></td>
+                                                                </c:when>
 
                                                             <c:when test="${i.status == 'Đã hủy'}">
-                                                                <td class="badge badge-danger">${i.status}</td>
+                                                                <td><span class="badge badge-danger">${i.status}</span></td>
+
                                                             </c:when>
 
                                                             <c:otherwise>
-                                                                <td class="badge badge-success">${i.status}</td>
-                                                            </c:otherwise>
-                                                        </c:choose> 
+                                                                <td><span class="badge badge-success">${i.status}</span></td>
+                                                                </c:otherwise>
+                                                            </c:choose> 
                                                         <td>${i.start_date}</td>
 
                                                         <td>
@@ -506,17 +508,18 @@
                                                         <td>${i.payment}</td>
                                                         <c:choose>
                                                             <c:when test="${i.status == 'Đang xử lý'}">
-                                                                <td class="badge badge-info">${i.status}</td>
-                                                            </c:when>
+                                                                <td><span class="badge badge-info">${i.status}</span></td>
+                                                                </c:when>
 
                                                             <c:when test="${i.status == 'Đã hủy'}">
-                                                                <td class="badge badge-danger">${i.status}</td>
+                                                                <td><span class="badge badge-danger">${i.status}</span></td>
+
                                                             </c:when>
 
                                                             <c:otherwise>
-                                                                <td class="badge badge-success">${i.status}</td>
-                                                            </c:otherwise>
-                                                        </c:choose> 
+                                                                <td><span class="badge badge-success">${i.status}</span></td>
+                                                                </c:otherwise>
+                                                            </c:choose> 
                                                         <td>${i.start_date}</td>
 
                                                         <td>
@@ -571,17 +574,18 @@
                                                         <td>${i.payment}</td>
                                                         <c:choose>
                                                             <c:when test="${i.status == 'Đang xử lý'}">
-                                                                <td class="badge badge-info">${i.status}</td>
-                                                            </c:when>
+                                                                <td><span class="badge badge-info">${i.status}</span></td>
+                                                                </c:when>
 
                                                             <c:when test="${i.status == 'Đã hủy'}">
-                                                                <td class="badge badge-danger">${i.status}</td>
+                                                                <td><span class="badge badge-danger">${i.status}</span></td>
+
                                                             </c:when>
 
                                                             <c:otherwise>
-                                                                <td class="badge badge-success">${i.status}</td>
-                                                            </c:otherwise>
-                                                        </c:choose> 
+                                                                <td><span class="badge badge-success">${i.status}</span></td>
+                                                                </c:otherwise>
+                                                            </c:choose> 
                                                         <td>${i.start_date}</td>
 
                                                         <td>

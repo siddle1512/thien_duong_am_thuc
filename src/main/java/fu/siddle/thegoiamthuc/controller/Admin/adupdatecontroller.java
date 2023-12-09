@@ -24,6 +24,7 @@ public class adupdatecontroller extends HttpServlet {
         String id = request.getParameter("query");
 
         HttpSession session = request.getSession();
+        
         List<Fooditem> listf = FooditemDAO.getInstance().getFid(id);
         session.setAttribute("listff", listf);
 
