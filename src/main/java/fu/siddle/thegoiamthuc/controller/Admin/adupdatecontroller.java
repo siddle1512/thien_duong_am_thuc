@@ -1,6 +1,8 @@
 package fu.siddle.thegoiamthuc.controller.Admin;
 
+import fu.siddle.thegoiamthuc.model.Category;
 import fu.siddle.thegoiamthuc.model.Fooditem;
+import fu.siddle.thegoiamthuc.model.dao.CategoryDAO;
 import fu.siddle.thegoiamthuc.model.dao.FooditemDAO;
 import java.io.IOException;
 import java.util.List;
@@ -20,13 +22,16 @@ public class adupdatecontroller extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
-        
+
         String id = request.getParameter("query");
 
         HttpSession session = request.getSession();
-        
+
         List<Fooditem> listf = FooditemDAO.getInstance().getFid(id);
         session.setAttribute("listff", listf);
+
+        List<Category> listC = CategoryDAO.getInstance().getAll();
+        session.setAttribute("listC", listC);
 
         RequestDispatcher rd = request.getRequestDispatcher("/views/dashboard/adupdate.jsp");
         rd.forward(request, response);
@@ -39,7 +44,7 @@ public class adupdatecontroller extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
 
         HttpSession session = request.getSession();
-        
+
         String name = request.getParameter("name");
         String category_id = request.getParameter("category_id");
         String price = request.getParameter("price");

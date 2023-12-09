@@ -42,7 +42,7 @@
             <!--Order part-->
             <div class="col-12 tm-block-col">
                 <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
-                    <h2 class="tm-block-title">Danh sách mua hàng</h2>
+                    <h2 class="tm-block-title">Danh các món ăn</h2>
                     <table class="table">
                         <thead>
                             <tr>

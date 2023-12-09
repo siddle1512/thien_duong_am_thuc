@@ -44,7 +44,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="./adlistfooditemcontroller">Danh sách món ăn</a>
-                            <a class="dropdown-item" href="./adaddcontroller">Thêm móna ăn</a>
+                            <a class="dropdown-item" href="./adaddcontroller">Thêm món ăn</a>
 
                         </div>
                     </li>
